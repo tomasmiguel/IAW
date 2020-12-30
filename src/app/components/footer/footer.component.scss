@@ -1,0 +1,16 @@
+footer {
+  display        : flex;
+  justify-content: space-around;
+  align-items    : flex-end;
+  height         : 5vh;
+  padding-bottom : 4px;
+}
+
+.info {
+  display: inline-block;
+}
+
+p {
+  display   : inline-block;
+  text-align: right;
+}
