@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-buscador',
+  selector: 'iaw-buscador',
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss']
 })
