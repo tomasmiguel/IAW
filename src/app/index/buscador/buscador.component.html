@@ -1,11 +1,18 @@
-<form class="buscador" (submit)="buscar($event)">
+<form class="buscador" (submit)="search()" [formGroup]="searchForm">
 
-  <div class="datos">
-    <input class="form-control dato" type="text" tabindex="1" name="artista" placeholder="Banda o Artista">
-    <input class="form-control dato" type="text" tabindex="2" name="nombre_cancion" placeholder="Canción">
+  <div class="data content-form">
+    <div class="data-input-layout">
+      <input matInput class="form-control dataInput" type="text" tabindex="1" name="artist" formControlName="artist" placeholder="Artista o Banda">
+      <!-- <mat-error>asfsdf</mat-error> -->
+    </div>
+
+    <div class="data-input-layout">
+      <input matInput class="form-control dataInput" type="text" tabindex="2" name="song" formControlName="song" placeholder="Canción">
+      <!-- <mat-error>asfsdf</mat-error> -->
+    </div>
   </div>
 
-  <button class="buscar" tabindex="3">
+  <button class="search" tabindex="3" [disabled]="searchForm.invalid">
     <i class="far fa-search mr-2"></i>
     <span>Buscar emociones</span>
   </button>

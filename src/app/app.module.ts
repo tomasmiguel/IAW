@@ -10,6 +10,11 @@ import { environment } from '../environments/environment';
 import { BuscadorComponent } from './index/buscador/buscador.component';
 import { LogoComponent } from './index/logo/logo.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ResultsComponent } from './index/results/results.component';
+import { HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -17,13 +22,18 @@ import { FooterComponent } from './components/footer/footer.component';
     IndexComponent,
     BuscadorComponent,
     LogoComponent,
-    FooterComponent
+    FooterComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
