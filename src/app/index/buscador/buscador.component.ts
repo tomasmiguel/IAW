@@ -31,6 +31,7 @@ export class BuscadorComponent implements OnInit {
       console.log('response ',r);
       
       //TODO: pasar data a result component
+      
     }
     );
   }
