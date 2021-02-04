@@ -12,9 +12,9 @@ import { LogoComponent } from './index/logo/logo.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResultsComponent } from './index/results/results.component';
 import { HttpClientModule } from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
