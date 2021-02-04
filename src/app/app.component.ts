@@ -1,5 +1,4 @@
 import { SearchService } from './index/search/services/search.service';
-import { LyricsService } from './services/lyrics.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

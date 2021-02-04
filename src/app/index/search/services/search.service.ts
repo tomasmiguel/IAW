@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { lyrics, watson } from './../../../services/global';
+import { lyrics, watson } from '../../../global/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
