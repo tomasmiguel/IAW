@@ -13,7 +13,8 @@
     "dev:ssr": "ng run final-iaw:serve-ssr",
     "serve:ssr": "node dist/final-iaw/server/main.js",
     "build:ssr": "ng build --prod && ng run final-iaw:server:production",
-    "prerender": "ng run final-iaw:prerender"
+    "prerender": "ng run final-iaw:prerender",
+    "start:heroku": "node dist/server"
   },
   "private": true,
   "dependencies": {
