@@ -1,14 +1,15 @@
+//Install express server
 const express = require('express');
-const app = express();
 const path = require('path');
-const cors = require('cors');
 
-app.use(cors());
-app.use(express.static('./dist/final-iaw/browser'));
+const app = express();
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, './../dist/final-iaw/browser/index.html'));
-  console.log('path', path.join(__dirname, './../dist/final-iaw/browser/index.html'));
-});
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/final-iaw'));
 
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/final-iaw/'}),
+);
+
+// Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
