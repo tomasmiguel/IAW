@@ -14,7 +14,7 @@
     "serve:ssr": "node dist/final-iaw/server/main.js",
     "build:ssr": "ng build --prod && ng run final-iaw:server:production",
     "prerender": "ng run final-iaw:prerender",
-    "start:heroku": "node /dist/final-iaw/browser",
+    "start:heroku": "node dist/final-iaw/browser",
     "upload:heroku": "heroku plugins:install heroku-builds && heroku builds:cancel && heroku restart && git push heroku main"
   },
   "private": true,
