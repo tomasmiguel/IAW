@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     SearchComponent,
     LogoComponent,
     FooterComponent,
-    ResultsComponent
+    ResultsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

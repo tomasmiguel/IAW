@@ -27,14 +27,17 @@ export class SearchComponent implements OnInit {
       return;
     }
     this.isSearching = true;
-    document.getElementById('loading-section')?.scrollIntoView();
+    this.songResults = null;
+    //document.getElementById('loading-section')?.scrollTo({top: 2000, behavior: 'smooth'});
 
     this.resultService.analizeSong().subscribe((response) => {
       //simulo delay
-      setTimeout(() => {
-        // if llego ok y se sabe el idioma, etc etc..
-        this.songResults = response;
-      }, 3000);
+      // setTimeout(() => {
+      //   // if llego ok y se sabe el idioma, etc etc..
+         this.songResults = response;
+         this.isSearching = false;
+      // }, 3000);
     });
+
   }
 }

@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {
+  faSmileBeam
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'iaw-results',
@@ -7,6 +10,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
+  faSmileBeam = faSmileBeam;
+  
+
   @Input() isSearching: boolean;
   @Input() results: string;
 
@@ -14,4 +20,6 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit(): void { }
 
+ 
+ 
 }
