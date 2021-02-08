@@ -15,17 +15,14 @@
     "build:ssr": "ng build --prod && ng run final-iaw:server:production",
     "prerender": "ng run final-iaw:prerender",
     "start:heroku": "node /dist/final-iaw/browser",
-    "upload:heroku": "heroku plugins:install heroku-builds && heroku builds:cancel && heroku restart && git push heroku main",
-    "heroku-postbuild": "ng build --prod"
+    "upload:heroku": "heroku plugins:install heroku-builds && heroku builds:cancel && heroku restart && git push heroku main"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.1",
     "@angular/cdk": "^11.0.2",
-    "@angular/cli": "~11.0.2",
     "@angular/common": "~11.0.1",
     "@angular/compiler": "~11.0.1",
-    "@angular/compiler-cli": "~11.0.1",
     "@angular/core": "~11.0.1",
     "@angular/forms": "~11.0.1",
     "@angular/material": "^11.0.2",
@@ -44,11 +41,12 @@
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "typescript": "~4.0.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.2",
+    "@angular/cli": "~11.0.2",
+    "@angular/compiler-cli": "~11.0.1",
     "@nguniversal/builders": "^11.0.1",
     "@types/express": "^4.17.0",
     "@types/jasmine": "~3.6.0",
@@ -63,10 +61,13 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0"
+    "tslint": "~6.1.0",
+    "typescript": "~4.0.2"
   },
   "engines": {
     "node": "14.15.4",
-    "npm": "6.14.11"
+    "npm": "6.14.11",
+    "express": "^4.17.1",
+    "cors": "^2.8.5"
   }
 }
