@@ -1,6 +1,6 @@
  <div>
     <div *ngIf="!results">
-        <div *ngIf="isSearching">
+        <div *ngIf="!results || (results && !results.emotion && !results.sentiment)">
           <iaw-loading ></iaw-loading>
         </div>
     </div>

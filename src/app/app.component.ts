@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   // tslint:disable-next-line: typedef
   async getSentiment() {
 
-    const { result } = await this._search.getLyrics('los redondos', 'jijiji').toPromise();
+    /* const { result } = await this._search.getLyrics('soda stereo', 'profugos').toPromise();
     let text = result.track.text;
     let language = result.track.lang.code;
 
@@ -38,8 +38,13 @@ export class AppComponent implements OnInit {
       text = translations[0].translation;
     }
 
-    const { emotion : { document : { emotion } } } = await this._search.getSentiment(text).toPromise();
+    const { emotion: { document: { emotion } } } = await this._search.getSentiment(text).toPromise();
+
     console.log(emotion);
+
+    const { result : resultSentim } = await this._search.getSentimApi(text).toPromise();
+
+    console.log(resultSentim); */
 
   }
 

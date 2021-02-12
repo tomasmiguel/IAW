@@ -1,5 +1,6 @@
+import { Song } from './../models/song';
 import { Observable } from 'rxjs';
-import { lyrics, watson } from '../../../global/global';
+import { lyrics, watson, sentim } from '../../../global/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -9,12 +10,14 @@ import { Injectable } from '@angular/core';
 export class SearchService {
   private lyrics: any;
   private watson: any;
+  private sentim: any;
 
   constructor(
     private _http: HttpClient
   ) {
     this.lyrics = lyrics;
     this.watson = watson;
+    this.sentim = sentim;
   }
 
   protected getHeaders = () => {
@@ -48,7 +51,7 @@ export class SearchService {
     return this._http.post(this.watson.translate.url, JSON.stringify(data), { headers });
   }
 
-  public getSentiment = (text: string): Observable<any> => {
+  public getEmotions = (text: string): Observable<any> => {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/json')
       .append('Authorization', 'Basic ' + btoa('apikey:' + this.watson.sentiment.apiKey));
@@ -62,6 +65,10 @@ export class SearchService {
     };
 
     return this._http.post(this.watson.sentiment.url, JSON.stringify(data), { headers });
+  }
+
+  public getSentiment = (text: string): Observable<any> => {
+    return this._http.post(this.sentim.url, JSON.stringify({text}), { headers: this.getHeaders() });
   }
 
 }

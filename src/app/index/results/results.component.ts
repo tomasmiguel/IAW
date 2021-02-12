@@ -1,3 +1,4 @@
+import { Song } from './../search/models/song';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class ResultsComponent implements OnInit {
   DEFAULT_ANIMATION_TIME = 4000;
 
   @Input() isSearching: boolean;
-  @Input() results: any;
+  @Input() results: Song;
 
   // urls imagenes
   angerUrl = '../../../assets/logo/anger.svg';
@@ -26,55 +27,55 @@ export class ResultsComponent implements OnInit {
   // #percentages
   getAngerPercentage(forGraphic = false): any {
     if (forGraphic){
-      return this.results.anger * 100;
+      return this.results.emotion.anger * 100;
     }
-    return (this.results.anger * 100).toFixed(1) + '%';
+    return (this.results.emotion.anger * 100).toFixed(1) + '%';
   }
 
   getDisgustPercentage(forGraphic = false): any {
     if (forGraphic){
-      return this.results.disgust * 100;
+      return this.results.emotion.disgust * 100;
     }
-    return (this.results.disgust * 100).toFixed(1) + '%';
+    return (this.results.emotion.disgust * 100).toFixed(1) + '%';
   }
 
   getFearPercentage(forGraphic = false): any {
     if (forGraphic){
-      return this.results.fear * 100;
+      return this.results.emotion.fear * 100;
     }
-    return (this.results.fear * 100).toFixed(1) + '%';
+    return (this.results.emotion.fear * 100).toFixed(1) + '%';
   }
 
   getJoyPercentage(forGraphic = false): any {
     if (forGraphic){
-      return this.results.joy * 100;
+      return this.results.emotion.joy * 100;
     }
-    return (this.results.joy * 100).toFixed(1) + '%';
+    return (this.results.emotion.joy * 100).toFixed(1) + '%';
   }
 
   getSadnessPercentage(forGraphic = false): any {
     if (forGraphic){
-      return this.results.sadness * 100;
+      return this.results.emotion.sadness * 100;
     }
-    return (this.results.sadness * 100).toFixed(1) + '%';
+    return (this.results.emotion.sadness * 100).toFixed(1) + '%';
   }
 
 
   // #animations time
   getAngerTime(): number {
-    return this.results.anger * this.DEFAULT_ANIMATION_TIME;
+    return this.results.emotion.anger * this.DEFAULT_ANIMATION_TIME;
   }
   getDisgustTime(): number {
-    return this.results.disgust * this.DEFAULT_ANIMATION_TIME;
+    return this.results.emotion.disgust * this.DEFAULT_ANIMATION_TIME;
   }
   getFearTime(): number {
-    return this.results.fear * this.DEFAULT_ANIMATION_TIME;
+    return this.results.emotion.fear * this.DEFAULT_ANIMATION_TIME;
   }
   getJoyTime(): number {
-    return this.results.joy * this.DEFAULT_ANIMATION_TIME;
+    return this.results.emotion.joy * this.DEFAULT_ANIMATION_TIME;
   }
   getSadnessTime(): number {
-    return this.results.sadness * this.DEFAULT_ANIMATION_TIME;
+    return this.results.emotion.sadness * this.DEFAULT_ANIMATION_TIME;
   }
 
 }
