@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { spotify } from './../../../../global/global';
+import { PlayerService } from './services/player.service';
+import { Song } from './../../../search/models/song';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'iaw-player',
@@ -6,24 +9,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
+  @Input() song: Song;
+  public trackURI: string;
 
 
-  constructor() { }
+  constructor(
+    private _player: PlayerService
+  ) { }
 
   ngOnInit(): void {
+
+
+    if (this.isLogued()) {
+      this.getTrack();
+    }
+  }
+
+
+  isLogued() {
+    const token = localStorage.getItem('access_token');
+    return (token) ? true : false;
   }
 
 
   login(): void {
-    const spotifyLoginWindow = window.open('https://accounts.spotify.com/authorize?client_id=d4fb8e7c1ef44fc4b01f0d047a0c9a52&response_type=code&scope=user-read-private%20user-read-email&state=34fFs29kd09&redirect_uri=https%3A%2F%2Fsentim-music.herokuapp.com%2Fcallback');
+    const spotifyLoginWindow = window.open('https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09');
 
     if (spotifyLoginWindow) {
       spotifyLoginWindow.onbeforeunload = () => {
-        /* const accessToken = localStorage.getItem('sp-accessToken');
-        const refreshToken = localStorage.getItem('sp-refreshToken');
-        console.log(accessToken, refreshToken); */
-        console.log('hola');
+        this.getTrack();
       };
     }
   }
+
+
+  getTrack() {
+    const token = (localStorage.getItem('access_token'));
+
+    if (token) {
+      this._player.getTrack(this.song.track.name + ' ' + this.song.artist.name, token).subscribe(
+        ({ tracks: { items: [first] } }) => {
+          this.trackURI = first.uri;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
 }

@@ -1,33 +1,47 @@
+import { spotify } from './../../../../../global/global';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
+  public spotify: any;
 
   constructor(
     private _http: HttpClient
-  ) { }
+  ) {
+    this.spotify = spotify;
+  }
 
-  getAccessToken = (code: string, redirectUri: string): Observable<any> => {
+  getAccessToken = (code: string): Observable<any> => {
 
-    const data = new FormData();
-    data.set('grant_type', 'authorization_code');
-    data.set('code', code);
-    data.set('redirect_uri', 'http%3A%2F%2Flocalhost%3A4200%2Fcallback');
-
-    const d = {
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: 'http%3A%2F%2Flocalhost%3A4200%2Fcallback'
-    };
+    const data: string = new HttpParams()
+      .set('grant_type', 'authorization_code')
+      .set('redirect_uri', this.spotify.redirect_uri)
+      .set('code', code)
+      .toString();
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: 'Basic ' + btoa('71b5dd25738b487cb5f33c78fcadb596:dcfb1f963fbe4b309176321a9c5b9140'),
+      Authorization: 'Basic ' + this.spotify.apiKey,
+      Accept: '*/*'
     });
-    return this._http.post('https://accounts.spotify.com/api/token', JSON.stringify(data), { headers });
+
+    return this._http.post('https://accounts.spotify.com/api/token', data, { headers });
   }
+
+  getTrack = (trackName: string, token: string): Observable<any> => {
+
+    const path = 'https://api.spotify.com/v1/search?q=' + encodeURI(trackName) + '&type=track';
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    });
+
+    return this._http.get(path, { headers });
+  }
+
 }

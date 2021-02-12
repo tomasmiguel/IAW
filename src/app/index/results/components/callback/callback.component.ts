@@ -1,6 +1,7 @@
 import { PlayerService } from './../player/services/player.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'iaw-callback',
@@ -14,23 +15,23 @@ export class CallbackComponent implements OnInit {
     private _spotify: PlayerService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this._activatedRoute.queryParams.subscribe(params => {
 
-    const code = this._activatedRoute.snapshot.paramMap.get('code');
+      this._spotify.getAccessToken(params.code).subscribe(
+        ({ access_token, token_type, expires_in, refresh_token, scope }) => {
+          localStorage.setItem('access_token', access_token);
+          localStorage.setItem('token_type', token_type);
+          localStorage.setItem('expires_in', expires_in);
+          localStorage.setItem('refresh_token', refresh_token);
+          localStorage.setItem('scope', scope);
 
-    this._spotify.getAccessToken(code + '', 'https://sentim-music.herokuapp.com/callback').subscribe(
-      ({access_token, token_type, expires_in, refresh_token, scope}) => {
-        localStorage.setItem('access_token', access_token);
-        localStorage.setItem('token_type', token_type);
-        localStorage.setItem('expires_in', expires_in);
-        localStorage.setItem('refresh_token', refresh_token);
-        localStorage.setItem('scope', scope);
-
-        // Close the popup
-        window.close();
-      },
-      (error) => console.log(error)
-    );
+          // Close the popup
+          window.close();
+        },
+        (error) => console.log(error)
+      );
+    });
 
   }
 

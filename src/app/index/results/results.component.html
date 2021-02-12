@@ -73,9 +73,9 @@
             </div>
         </section>
     </div>
-    <div *ngIf="!results">
+    <div *ngIf="results">
       <div class="col-md-6">
-        <iaw-player></iaw-player>
+        <iaw-player [song]="results" ></iaw-player>
       </div>
     </div>
 </div>
