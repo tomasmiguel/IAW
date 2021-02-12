@@ -28,6 +28,6 @@ export class PlayerService {
       'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: 'Basic ' + btoa('71b5dd25738b487cb5f33c78fcadb596:dcfb1f963fbe4b309176321a9c5b9140'),
     });
-    return this._http.post('https://accounts.spotify.com/api/token', JSON.stringify(d), { headers });
+    return this._http.post('https://accounts.spotify.com/api/token', JSON.stringify(data), { headers });
   }
 }
