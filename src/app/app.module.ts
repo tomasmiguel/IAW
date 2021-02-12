@@ -18,6 +18,9 @@ import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { PlayerComponent } from './index/results/components/player/player.component';
+import { InfoComponent } from './index/results/components/info/info.component';
+import { CallbackComponent } from './index/results/components/callback/callback.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     FooterComponent,
     ResultsComponent,
     LoadingComponent,
+    PlayerComponent,
+    InfoComponent,
+    CallbackComponent,
 
   ],
   imports: [

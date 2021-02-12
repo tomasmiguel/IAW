@@ -67,7 +67,6 @@ export class SearchComponent implements OnInit {
     this._search.getLyrics(artist, song).subscribe(
       async ({ result }) => {
         this.song = result;
-        console.log("letra ",result.track.text)
         if (this.song.track.lang.code === 'xx') {
           await this.identifyLanguage();
         }
