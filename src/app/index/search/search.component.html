@@ -1,0 +1,26 @@
+<form class="buscador" (submit)="search()" [formGroup]="searchForm">
+
+  <div class="data content-form">
+    <div class="data-input-layout">
+      <mat-form-field>
+        <input matInput class="form-control dataInput" type="text" tabindex="1" name="artist" formControlName="artist" placeholder="Artista o Banda">
+        <mat-error>Debe ingresar un artista o banda</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data-input-layout">
+      <mat-form-field>
+        <input matInput class="form-control dataInput" type="text" tabindex="2" name="song" formControlName="song" placeholder="Título de una canción">
+        <mat-error>Debe ingresar el título de una canción</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button class="search" tabindex="3" >
+    <i class="far fa-search mr-2"></i>
+    <span>Buscar emociones</span>
+  </button>
+
+  <iaw-results [isSearching]="isSearching" [results]="song"></iaw-results>
+
+</form>
