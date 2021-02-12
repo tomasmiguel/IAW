@@ -1,10 +1,8 @@
  <div>
-    <div *ngIf="!results">
-        <div *ngIf="!results || (results && !results.emotion && !results.sentiment)">
-          <iaw-loading ></iaw-loading>
-        </div>
+    <div *ngIf="(isSearching && !results) || (results && !results.emotion && !results.sentiment)">
+        <iaw-loading ></iaw-loading>
     </div>
-    <div *ngIf="results">
+    <div *ngIf="results && results.emotion && results.sentiment">
         <h1 class="results-title">SENTIMIENTO DE LA CANCIÓN</h1>
 
         <section id="results-section-id">
@@ -74,19 +72,7 @@
                 <h2>{{getSadnessPercentage()}}</h2>
             </div>
         </section>
-
-      
-        
-        <!-- 
-        Si alguna de estas convence mas que las que ya estan, se cambia:
-        <i class="far fa-grin-tears fa-10x"></i>
-        <i class="far fa-smile-beam fa-10x"></i>
-        <i class="far fa-frown-open fa-10x"></i>
-        <i class="far fa-surprise fa-10x"></i>
-        <i class="far fa-dizzy fa-10x"></i>
-        <i class="far fa-flushed fa-10x"></i>
-        <i class="far fa-grimace fa-10x"></i>
-        <i class="far fa-meh fa-10x"></i> -->
+        <span>{{results.track.text}}</span>
     </div>
 </div>
 

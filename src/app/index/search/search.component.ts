@@ -2,7 +2,6 @@ import { Song } from './models/song';
 import { SearchService } from './services/search.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ResultService } from '../results/services/result.service';
 
 
 @Component({
@@ -32,6 +31,7 @@ export class SearchComponent implements OnInit {
 
   search() {
     if (!this.searchForm.invalid) {
+      this.isSearching = true;
       this.getLyrics();
     }
   }
@@ -40,7 +40,6 @@ export class SearchComponent implements OnInit {
     this._search.getSentiment(this.song.track.text_en).subscribe(
       ({ result }) => {
         this.song.sentiment = result;
-        console.log(this.song);
       }
     );
   }
@@ -49,7 +48,6 @@ export class SearchComponent implements OnInit {
     this._search.getEmotions(this.song.track.text_en).subscribe(
       ({ emotion: { document: { emotion } } }) => {
         this.song.emotion = emotion;
-        console.log(this.song);
       }
     );
   }
@@ -65,12 +63,11 @@ export class SearchComponent implements OnInit {
   }
 
   async getLyrics() {
-    this.isSearching = true;
-
     const { artist, song } = this.searchForm.value;
     this._search.getLyrics(artist, song).subscribe(
       async ({ result }) => {
         this.song = result;
+        console.log("letra ",result.track.text)
         if (this.song.track.lang.code === 'xx') {
           await this.identifyLanguage();
         }
