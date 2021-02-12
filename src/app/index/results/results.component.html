@@ -1,17 +1,92 @@
- <div  id="loading-section">
+ <div>
     <div *ngIf="!results">
         <div *ngIf="isSearching">
           <iaw-loading ></iaw-loading>
         </div>
     </div>
     <div *ngIf="results">
-        <h1>mostrar resultados</h1>
+        <h1 class="results-title">SENTIMIENTO DE LA CANCIÓN</h1>
+
+        <section id="results-section-id">
+             <!-- ANGER -->
+            <div class="particular-feeling" style="--color: #df1515;">
+                <h2 >ENFADO</h2>
+                <circle-progress 
+                    title="Ira\Enfado"
+                    [outerStrokeColor]= "'#df1515'"
+                    [imageSrc]="angerUrl"
+                    [percent]="getAngerPercentage(true)"
+                    [animationDuration]="getAngerTime()" 
+                >
+                </circle-progress>
+                <h2>{{getAngerPercentage()}}</h2>
+            </div>
+             <!-- DISGUST -->
+            <div class="particular-feeling" style="--color: #29c51b;">
+                <h2>DISGUSTO</h2>
+                <circle-progress
+                    title="Disgusto\Asco"
+                    [outerStrokeColor]= "'#29c51b'"
+                    [imageSrc]="disgustUrl"
+                    [percent]="getDisgustPercentage(true)"
+                    [animationDuration]="getDisgustTime()" 
+                >
+                </circle-progress>
+                <h2>{{getDisgustPercentage()}}</h2>
+            </div>
+             <!-- FEAR -->
+            <div class="particular-feeling" style="--color: #661694;">
+                <h2>MIEDO</h2>
+                <circle-progress 
+                    title="Miedo\Temor"
+                    [outerStrokeColor]= "'#661694'"
+                    [imageSrc]="fearUrl"
+                    [percent]="getFearPercentage(true)"
+                    [animationDuration]="getFearTime()"                    
+                >
+                </circle-progress>
+                <h2>{{getFearPercentage()}}</h2>
+            </div>
+            <!-- JOY -->
+            <div class="particular-feeling" style="--color: #ea6912;">
+                <h2>ALEGRIA</h2>
+                <circle-progress 
+                    title="Alegría\Placer"
+                    [outerStrokeColor]= "'#ea6912'"
+                    [imageSrc]="joyUrl"
+                    [percent]="getJoyPercentage(true)"
+                    [animationDuration]="getJoyTime()" 
+                >
+                </circle-progress>
+                <h2>{{getJoyPercentage()}}</h2>
+            </div>
+             <!-- SADNESS -->
+            <div class="particular-feeling" style="--color: #4255e3;">
+                <h2>TRISTEZA</h2>
+                <circle-progress 
+                    title="Tristeza\Pena"
+                    [outerStrokeColor]= "'#4255e3'"
+                    [imageSrc]="sadnessUrl"
+                    [percent]="getSadnessPercentage(true)"
+                    [animationDuration]="getSadnessTime()" 
+                >
+                </circle-progress>
+                <h2>{{getSadnessPercentage()}}</h2>
+            </div>
+        </section>
+
+      
+        
+        <!-- 
+        Si alguna de estas convence mas que las que ya estan, se cambia:
         <i class="far fa-grin-tears fa-10x"></i>
-        <i class="far fa-angry fa-10x"></i>
-        <i class="far fa-tired fa-10x"></i>
-        <i class="far fa-sad-cry fa-10x"></i>
         <i class="far fa-smile-beam fa-10x"></i>
-        <i class="far fa-sad-tear fa-10x"></i>
+        <i class="far fa-frown-open fa-10x"></i>
+        <i class="far fa-surprise fa-10x"></i>
+        <i class="far fa-dizzy fa-10x"></i>
+        <i class="far fa-flushed fa-10x"></i>
+        <i class="far fa-grimace fa-10x"></i>
+        <i class="far fa-meh fa-10x"></i> -->
     </div>
 </div>
 

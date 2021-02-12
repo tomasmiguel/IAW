@@ -17,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LogoComponent,
     FooterComponent,
     ResultsComponent,
-    LoadingComponent
+    LoadingComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatInputModule,
     FormsModule,
     FontAwesomeModule,
+    NgCircleProgressModule.forRoot({
+      backgroundPadding: 7,
+      radius: 100,
+      space: -9,
+      animationDuration: 2000,
+      animation: true,
+      clockwise: false,
+      imageHeight: 130,
+      imageWidth: 130,
+      showImage: true,
+      showBackground: false,
+      outerStrokeGradient: true,
+      outerStrokeWidth: 9,
+      outerStrokeGradientStopColor: '#3b3c42',
+      innerStrokeWidth: 2,
+      innerStrokeColor: '#a7a7a7',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,15 +29,25 @@ export class SearchComponent implements OnInit {
     }
     this.isSearching = true;
     this.songResults = null;
-    //document.getElementById('loading-section')?.scrollTo({top: 2000, behavior: 'smooth'});
 
-    this.resultService.analizeSong().subscribe((response) => {
+    this.resultService.analizeSong().subscribe((response: any) => {
       //simulo delay
-      // setTimeout(() => {
-      //   // if llego ok y se sabe el idioma, etc etc..
-         this.songResults = response;
-         this.isSearching = false;
-      // }, 3000);
+     // setTimeout(() => {
+        // if llego ok y se sabe el idioma, etc etc..
+
+        const result = {
+          anger: 0.110993,
+          disgust: 0.073194,
+          fear: 0.100181,
+          joy: 0.447153,
+          sadness: 0.357578,
+        };
+        this.songResults = result;
+        this.isSearching = false;
+        document.getElementById("results-section-id")?.scrollIntoView();
+
+        
+     //}, 3000);
     });
 
   }
