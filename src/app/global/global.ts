@@ -26,6 +26,5 @@ export const spotify = {
   client_id: 'd4fb8e7c1ef44fc4b01f0d047a0c9a52',
   cliente_secret: '3110d9697eac4498ae877006ddf878a0',
   apiKey: 'ZDRmYjhlN2MxZWY0NGZjNGIwMWYwZDA0N2EwYzlhNTI6MzExMGQ5Njk3ZWFjNDQ5OGFlODc3MDA2ZGRmODc4YTA=',
-  url_code: 'https://accounts.spotify.com/authorize?client_id=d4fb8e7c1ef44fc4b01f0d047a0c9a52&response_type=code&scope=user-read-private%20user-read-email&state=34fFs29kd09&redirect_uri=https%3A%2F%2Fsentim-music.herokuapp.com%2Fspotify%2F',
-  redirect_uri: 'http://localhost:4444/callback'
+  redirect_uri: 'https://sentim-music.herokuapp.com/spotify'
 };
