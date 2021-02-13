@@ -10,7 +10,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
   @Input() song: Song;
-  public trackURI: string;
 
 
   constructor(
@@ -26,9 +25,9 @@ export class PlayerComponent implements OnInit {
   }
 
 
-  isLogued() {
+  isLogued(): boolean {
     const token = localStorage.getItem('access_token');
-    return (token) ? true : false;
+    return (token && token.length && token.length > 0) ? true : false;
   }
 
 
@@ -49,7 +48,8 @@ export class PlayerComponent implements OnInit {
     if (token) {
       this._player.getTrack(this.song.track.name + ' ' + this.song.artist.name, token).subscribe(
         ({ tracks: { items: [first] } }) => {
-          this.trackURI = first.uri;
+          this.song.spotifyTrack = first;
+          console.log(first);
         },
         (error) => {
           console.log(error);

@@ -1,3 +1,5 @@
+import { SpotifyTrack } from '../../results/components/player/models/spotify-track';
+
 export class Song {
   public constructor(
     public artist: {
@@ -27,6 +29,7 @@ export class Song {
       notice: string,
       artist: string,
       text: string
-    }
+    },
+    public spotifyTrack: SpotifyTrack
   ){}
 }

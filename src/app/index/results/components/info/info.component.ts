@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Song } from './../../../search/models/song';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'iaw-info',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.component.scss']
 })
 export class InfoComponent implements OnInit {
+  @Input() song: Song;
 
   constructor() { }
 

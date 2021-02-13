@@ -21,6 +21,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { PlayerComponent } from './index/results/components/player/player.component';
 import { InfoComponent } from './index/results/components/info/info.component';
 import { CallbackComponent } from './index/results/components/callback/callback.component';
+import { SafePipe } from './index/results/components/player/pipes/safe.pipe';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CallbackComponent } from './index/results/components/callback/callback.
     PlayerComponent,
     InfoComponent,
     CallbackComponent,
+    SafePipe,
 
   ],
   imports: [

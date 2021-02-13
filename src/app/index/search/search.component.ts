@@ -10,10 +10,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
-  searchForm: FormGroup;
-  song: Song;
-  isSearching = false;
+  public searchForm: FormGroup;
+  public song: Song;
+  public isSearching = false;
+  public error = false;
 
   constructor(
     private _search: SearchService,
@@ -32,53 +32,77 @@ export class SearchComponent implements OnInit {
   search() {
     if (!this.searchForm.invalid) {
       this.isSearching = true;
+      this.error = false;
       this.getLyrics();
     }
   }
 
   async getSentiments() {
-    this._search.getSentiment(this.song.track.text_en).subscribe(
-      ({ result }) => {
-        this.song.sentiment = result;
-      }
-    );
+    if (this.song) {
+      this._search.getSentiment(this.song.track.text_en).subscribe(
+        ({ result }) => {
+          if (this.song) { this.song.sentiment = result; }
+        }
+      );
+    }
   }
 
   async getEmotions() {
-    this._search.getEmotions(this.song.track.text_en).subscribe(
-      ({ emotion: { document: { emotion } } }) => {
-        this.song.emotion = emotion;
-      }
-    );
+    if (this.song) {
+      this._search.getEmotions(this.song.track.text_en).subscribe(
+        ({ emotion: { document: { emotion } } }) => {
+          if (this.song) { this.song.emotion = emotion; }
+        }
+      );
+    }
   }
 
   async translate() {
-    const { translations: [first] } = await this._search.translateText([this.song.track.text], this.song.track.lang.code, 'en').toPromise();
-    this.song.track.text_en = first.translation;
+    if (this.song) {
+      const { translations: [first] } =
+        await this._search.translateText([this.song.track.text], this.song.track.lang.code, 'en').toPromise();
+      this.song.track.text_en = first.translation;
+    }
   }
 
   async identifyLanguage() {
-    const { languages: [first] } = await this._search.identifyLanguage(this.song.track.text).toPromise();
-    this.song.track.lang.code = first.language;
+    if (this.song) {
+      const { languages: [first] } = await this._search.identifyLanguage(this.song.track.text).toPromise();
+      this.song.track.lang.code = first.language;
+    }
   }
 
   async getLyrics() {
     const { artist, song } = this.searchForm.value;
+    /* const artist = 'Gustavo cerati';
+    const song = 'crimen'; */
+
     this._search.getLyrics(artist, song).subscribe(
       async ({ result }) => {
         this.song = result;
-        if (this.song.track.lang.code === 'xx') {
-          await this.identifyLanguage();
+
+        if (this.song) {
+          if (this.song.track.lang.code === 'xx') {
+            await this.identifyLanguage();
+          }
+
+          (this.song.track.lang.code !== 'en')
+            ? await this.translate()
+            : this.song.track.text_en = this.song.track.text;
+
+          this.getEmotions();
+          this.getSentiments();
         }
-
-        (this.song.track.lang.code !== 'en')
-          ? await this.translate()
-          : this.song.track.text_en = this.song.track.text;
-
-        this.getEmotions();
-        this.getSentiments();
-      }
+      },
+      (error) => this.setError(error)
     );
+  }
+
+
+  private setError(error: any): void {
+    this.isSearching = false;
+    this.error = true;
+    console.log(error);
   }
 
 }

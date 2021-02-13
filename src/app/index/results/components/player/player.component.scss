@@ -1,13 +1,15 @@
+$height : 300px;
+
 .player {
   //max-width: 100%;
   width : 400px;
-  height: 400px;
+  height: $height;
 }
 
 
 .login {
   width              : 400px;
-  height             : 400px;
+  height             : $height;
   background-image   : url('/assets/bg/player-no-login.svg');
   background-size    : 200% auto;
   background-position: center;
