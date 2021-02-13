@@ -12,12 +12,20 @@
                 <circle-progress 
                     title="Ira\Enfado"
                     [outerStrokeColor]= "'#df1515'"
-                    [imageSrc]="angerUrl"
-                    [percent]="getAngerPercentage(true)"
-                    [animationDuration]="getAngerTime()" 
+                    [imageSrc]="Sentims.ANGER.url"
+                    [percent]="Sentims.ANGER.percentage"
+                    [animationDuration]="Sentims.ANGER.animationTime" 
                 >
                 </circle-progress>
-                <h2>{{getAngerPercentage()}}</h2>
+                <h2 [countUp]="Sentims.ANGER.percentage" 
+                    [options]= "{
+                        decimalPlaces: 1,
+                        separator: '.',
+                        duration: (Sentims.ANGER.animationTime /1000),
+                        suffix: '%'
+                    }">
+                    0
+                </h2>
             </div>
              <!-- DISGUST -->
             <div class="particular-feeling" style="--color: #29c51b;">
@@ -25,12 +33,20 @@
                 <circle-progress
                     title="Disgusto\Asco"
                     [outerStrokeColor]= "'#29c51b'"
-                    [imageSrc]="disgustUrl"
-                    [percent]="getDisgustPercentage(true)"
-                    [animationDuration]="getDisgustTime()" 
+                    [imageSrc]="Sentims.DISGUST.url"
+                    [percent]="Sentims.DISGUST.percentage"
+                    [animationDuration]="Sentims.DISGUST.animationTime" 
                 >
                 </circle-progress>
-                <h2>{{getDisgustPercentage()}}</h2>
+                <h2 [countUp]="Sentims.DISGUST.percentage" 
+                    [options]= "{
+                        decimalPlaces: 1,
+                        separator: '.',
+                        duration: (Sentims.DISGUST.animationTime /1000),
+                        suffix: '%'
+                    }">
+                    0
+                </h2>
             </div>
              <!-- FEAR -->
             <div class="particular-feeling" style="--color: #661694;">
@@ -38,12 +54,20 @@
                 <circle-progress 
                     title="Miedo\Temor"
                     [outerStrokeColor]= "'#661694'"
-                    [imageSrc]="fearUrl"
-                    [percent]="getFearPercentage(true)"
-                    [animationDuration]="getFearTime()"                    
+                    [imageSrc]="Sentims.FEAR.url"
+                    [percent]="Sentims.FEAR.percentage"
+                    [animationDuration]="Sentims.FEAR.animationTime"                
                 >
                 </circle-progress>
-                <h2>{{getFearPercentage()}}</h2>
+                <h2 [countUp]="Sentims.FEAR.percentage" 
+                    [options]= "{
+                        decimalPlaces: 1,
+                        separator: '.',
+                        duration: (Sentims.FEAR.animationTime /1000),
+                        suffix: '%'
+                    }">
+                    0
+                </h2>
             </div>
             <!-- JOY -->
             <div class="particular-feeling" style="--color: #ea6912;">
@@ -51,25 +75,44 @@
                 <circle-progress 
                     title="Alegría\Placer"
                     [outerStrokeColor]= "'#ea6912'"
-                    [imageSrc]="joyUrl"
-                    [percent]="getJoyPercentage(true)"
-                    [animationDuration]="getJoyTime()" 
+                    [imageSrc]="Sentims.JOY.url"
+                    [percent]="Sentims.JOY.percentage"
+                    [animationDuration]="Sentims.JOY.animationTime" 
                 >
                 </circle-progress>
-                <h2>{{getJoyPercentage()}}</h2>
+                <h2 [countUp]="Sentims.JOY.percentage" 
+                    [options]= "{
+                        decimalPlaces: 1,
+                        separator: '.',
+                        duration: (Sentims.JOY.animationTime /1000),
+                        suffix: '%'
+                    }">
+                    0
+                </h2>
             </div>
              <!-- SADNESS -->
             <div class="particular-feeling" style="--color: #4255e3;">
                 <h2>TRISTEZA</h2>
                 <circle-progress 
+                    #tristeza
                     title="Tristeza\Pena"
+                    (click)=refresh()
                     [outerStrokeColor]= "'#4255e3'"
-                    [imageSrc]="sadnessUrl"
-                    [percent]="getSadnessPercentage(true)"
-                    [animationDuration]="getSadnessTime()" 
+                    [imageSrc]="Sentims.SADNESS.url"
+                    [percent]="Sentims.SADNESS.percentage"
+                    [animationDuration]="Sentims.SADNESS.animationTime" 
                 >
                 </circle-progress>
-                <h2>{{getSadnessPercentage()}}</h2>
+                <h2 [countUp]="Sentims.SADNESS.percentage" 
+                    (click)="refresh()"
+                    [options]= "{
+                        decimalPlaces: 1,
+                        separator: '.',
+                        duration: (Sentims.SADNESS.animationTime /1000),
+                        suffix: '%'
+                    }">
+                    0
+                </h2>
             </div>
         </section>
         <span>{{results.track.text}}</span>

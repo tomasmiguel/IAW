@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { CountUpModule } from 'ngx-countup';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatInputModule,
     FormsModule,
     FontAwesomeModule,
+    CountUpModule,
     NgCircleProgressModule.forRoot({
       backgroundPadding: 7,
       radius: 100,
