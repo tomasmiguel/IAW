@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CountUpModule } from 'ngx-countup';
+import { Emotion } from '../../search/models/emotion';
 
 @Component({
   selector: 'iaw-feelings',
@@ -8,7 +9,8 @@ import { CountUpModule } from 'ngx-countup';
 })
 export class FeelingsComponent implements OnInit {
 
-  @Input() feelings: any;
+  @Input() feelings: Emotion;
+  @Input() trackName: string;
 
   countUp = new CountUpModule();
   DEFAULT_ANIMATION_TIME = 4000;

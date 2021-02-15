@@ -4,7 +4,7 @@
     </div>
     <div *ngIf="song && song.emotion && song.track && song.sentiment">
         <!-- seccion sentimientos-->
-        <iaw-feelings [feelings]="song.emotion"></iaw-feelings>
+        <iaw-feelings [feelings]="song.emotion" [trackName]="song.track.name"></iaw-feelings>
 
         <!-- seccion spotify ??? -->
 
