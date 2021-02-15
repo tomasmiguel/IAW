@@ -19,6 +19,8 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CountUpModule } from 'ngx-countup';
+import { LyricComponent } from './index/results/lyric/lyric.component';
+import { FeelingsComponent } from './index/results/feelings/feelings.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { CountUpModule } from 'ngx-countup';
     FooterComponent,
     ResultsComponent,
     LoadingComponent,
+    LyricComponent,
+    FeelingsComponent,
 
   ],
   imports: [

@@ -32,38 +32,7 @@ export class SearchComponent implements OnInit {
   search() {
     if (!this.searchForm.invalid) {
       this.isSearching = true;
-      //this.getLyrics();
-
-      this.song = new Song(
-      {
-        name: "Gustavo Cerati"
-      },
-      {
-        lang: 
-          {
-            code: "es", 
-            name: "Spanish"
-          },
-        name: "Crimen",
-        text: "La espera me agotó↵No se nada de vos↵Dejaste tanto en mí↵En llamas me acosté↵Y en un lento degradé↵Supe que te perdí↵↵¿Qué otra cosa puedo hacer?↵Si no olvido, moriré↵Y otro crimen quedará↵Otro crimen quedará↵Sin resolver↵↵Una rápida traición↵Y salimos del amor↵Tal vez me lo busqué↵↵Mi ego va a estallar↵Ahí donde no estás↵Oh... los celos otra vez↵↵¿Qué otra cosa puedo hacer?↵Si no olvido moriré↵Y otro crimen quedará↵Otro crimen quedará↵Sin resolver↵↵No lo sé↵Cuanto falta no lo sé↵Si es muy tarde no lo sé↵Si no olvido, moriré↵Que otra cosa puedo hacer?↵Que otra cosa puedo hacer?↵↵Ahora sé lo que es perder↵↵Otro crimen quedará↵Otro crimen quedará↵Sin resolver",
-        text_en: "The wait exhau",
-      },
-      {
-        anger: 0.521788,
-        disgust: 0.089308,
-        fear: 0.145935,
-        joy: 0.027425,
-        sadness: 0.661355
-      },
-      {
-        polarity: -0.02,
-        type: "negative"
-      },
-      {
-        artist: "Copyright Gustavo Cerati",
-        notice: "Crimen lyrics are property and copyright of their owners. Commercial use is not allowed.",
-        text: "All lyrics provided for educational purposes and personal use only.",
-      })
+      this.getLyrics();
     }
   }
 
@@ -108,8 +77,6 @@ export class SearchComponent implements OnInit {
 
         this.getEmotions();
         this.getSentiments();
-
-        console.log(this.song);
       }
     );
   }
