@@ -1,0 +1,33 @@
+.info {
+  width: 100%;
+  min-width: 400px;
+  min-height: 290px;
+}
+
+.info .title{
+  width: 100%;
+	font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-size: 40px;
+  color: #505050;
+  text-align: left;
+  margin-bottom: 25px;
+  font-weight: bolder;
+}
+
+.info .data{
+  color: #8d8d8d!important;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.list-group-item{
+  border: 0 solid #aaa !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  padding-left: 0 !important;
+  color: #505050 !important;
+}
+
+.list-group-item .badge{
+  font-size: 12px !important;
+  font-weight: normal !important;
+}

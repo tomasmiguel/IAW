@@ -1,0 +1,38 @@
+<div *ngIf="song.spotifyTrack" class="d-inline-block info">
+
+  <div class="title">
+    {{ song.spotifyTrack.name }}
+  </div>
+
+  <div class="data">
+    <ng-container>
+      by <span *ngFor="let artist of song.spotifyTrack.artists"> {{artist.name}} </span>
+    </ng-container>
+
+    <ng-container>
+      <span class="date pl-2" *ngIf="song.spotifyTrack.album.release_date">
+        {{ song.spotifyTrack.album.release_date | date:'mediumDate' }}
+      </span>
+    </ng-container>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <b>Sentimiento de la letra:</b>
+      <span class="badge badge-secondary badge-pill">{{song.sentiment.type}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <b>Álbum:</b>
+      <span class="badge badge-secondary badge-pill">{{song.spotifyTrack.album.name}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <b>Canción nº del álbum:</b>
+      <span class="badge badge-secondary badge-pill">{{song.spotifyTrack.track_number}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <b>Popularidad:</b>
+      <span class="badge badge-secondary badge-pill">{{song.spotifyTrack.popularity}} / 100</span>
+    </li>
+  </ul>
+
+</div>

@@ -7,10 +7,12 @@
         <iaw-feelings [feelings]="song.emotion" [trackName]="song.track.name"></iaw-feelings>
 
         <!-- seccion spotify ??? -->
+        <div *ngIf="song && song.emotion && song.sentiment" class="col-12 player-info">
+          <iaw-player [song]="song"></iaw-player>
+          <iaw-info *ngIf="song.spotifyTrack" [song]="song"></iaw-info>
+        </div>
 
         <!-- seccion letra -->
         <iaw-lyric [track]="song.track"></iaw-lyric>
     </div>
 </div>
-
-

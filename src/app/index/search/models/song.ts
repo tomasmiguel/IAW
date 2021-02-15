@@ -1,5 +1,6 @@
-import { Emotion } from "./emotion";
-import { Track } from "./track";
+import { Emotion } from './emotion';
+import { Track } from './track';
+import { SpotifyTrack } from '../../results/components/player/models/spotify-track';
 
 export class Song {
   public constructor(
@@ -18,6 +19,7 @@ export class Song {
       notice: string,
       artist: string,
       text: string
-    }
+    },
+    public spotifyTrack: SpotifyTrack
   ){}
 }
