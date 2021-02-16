@@ -42,7 +42,7 @@ export class PlayerComponent implements OnInit {
           console.log(first);
         },
         (error) => {
-          console.log(error);
+          this._player.deleteToken();
         }
       );
     }

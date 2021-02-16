@@ -61,11 +61,11 @@ export class PlayerService {
   }
 
   deleteToken = (): void => {
-    localStorage.delete('access_token');
-    localStorage.delete('token_type');
-    localStorage.delete('expires_in');
-    localStorage.delete('refresh_token');
-    localStorage.delete('scope');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('token_type');
+    localStorage.removeItem('expires_in');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('scope');
   }
 
 }
