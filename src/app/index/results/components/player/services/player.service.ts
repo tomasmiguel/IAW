@@ -32,6 +32,22 @@ export class PlayerService {
     return this._http.post('https://accounts.spotify.com/api/token', data, { headers });
   }
 
+  getRefreshToken = (refresh_token: string): Observable<any> => {
+
+    const data: string = new HttpParams()
+      .set('grant_type', 'refresh_token')
+      .set('refresh_token', refresh_token)
+      .toString();
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Basic ' + this.spotify.apiKey,
+      Accept: '*/*'
+    });
+
+    return this._http.post('https://accounts.spotify.com/api/token', data, { headers });
+  }
+
   getTrack = (trackName: string, token: string): Observable<any> => {
 
     const path = 'https://api.spotify.com/v1/search?q=' + encodeURI(trackName) + '&type=track';
@@ -42,6 +58,14 @@ export class PlayerService {
     });
 
     return this._http.get(path, { headers });
+  }
+
+  deleteToken = (): void => {
+    localStorage.delete('access_token');
+    localStorage.delete('token_type');
+    localStorage.delete('expires_in');
+    localStorage.delete('refresh_token');
+    localStorage.delete('scope');
   }
 
 }

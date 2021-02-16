@@ -74,8 +74,6 @@ export class SearchComponent implements OnInit {
 
   async getLyrics() {
     const { artist, song } = this.searchForm.value;
-    /* const artist = 'Gustavo cerati';
-    const song = 'crimen'; */
 
     this._search.getLyrics(artist, song).subscribe(
       async ({ result }) => {
@@ -102,7 +100,6 @@ export class SearchComponent implements OnInit {
   private setError(error: any): void {
     this.isSearching = false;
     this.error = true;
-    console.log(error);
   }
 
 }

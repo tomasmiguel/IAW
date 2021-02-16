@@ -1,10 +1,6 @@
-<div>
+<div class="col-12">
   <div *ngIf="(isSearching && !results) || (results && !results.emotion && !results.sentiment)">
     <iaw-loading></iaw-loading>
-  </div>
-  <div *ngIf="results && results.emotion && results.sentiment" class="col-12 player-info">
-    <iaw-player [song]="results"></iaw-player>
-    <iaw-info *ngIf="results.spotifyTrack" [song]="results"></iaw-info>
   </div>
   <div *ngIf="results && results.emotion && results.sentiment">
     <h1 class="results-title">SENTIMIENTO DE LA CANCIÓN</h1>
@@ -51,5 +47,9 @@
         <h2>{{getSadnessPercentage()}}</h2>
       </div>
     </section>
+  </div>
+  <div *ngIf="results && results.emotion && results.sentiment" class="col-12 player-info">
+    <iaw-player [song]="results"></iaw-player>
+    <iaw-info *ngIf="results.spotifyTrack" [song]="results"></iaw-info>
   </div>
 </div>
