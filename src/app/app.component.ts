@@ -1,4 +1,3 @@
-import { SearchService } from './index/search/services/search.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

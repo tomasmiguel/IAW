@@ -1,3 +1,5 @@
+import { Emotion } from './emotion';
+import { Track } from './track';
 import { SpotifyTrack } from '../../results/components/player/models/spotify-track';
 
 export class Song {
@@ -5,22 +7,10 @@ export class Song {
     public artist: {
       name: string
     },
-    public track: {
-      name: string,
-      text: string,
-      text_en: string,
-      lang: {
-        code: string,
-        name: string
-      }
-    },
-    public emotion: {
-      sadness: number,
-      joy: number,
-      fear: number,
-      disgust: number,
-      anger: number,
-    },
+    public track: Track,
+
+    public emotion: Emotion,
+
     public sentiment: {
       polarity: number,
       type: string

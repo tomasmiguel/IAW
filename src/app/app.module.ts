@@ -18,6 +18,9 @@ import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { CountUpModule } from 'ngx-countup';
+import { LyricComponent } from './index/results/lyric/lyric.component';
+import { FeelingsComponent } from './index/results/feelings/feelings.component';
 import { PlayerComponent } from './index/results/components/player/player.component';
 import { InfoComponent } from './index/results/components/info/info.component';
 import { CallbackComponent } from './index/results/components/callback/callback.component';
@@ -33,6 +36,8 @@ import { SafePipe } from './index/results/components/player/pipes/safe.pipe';
     FooterComponent,
     ResultsComponent,
     LoadingComponent,
+    LyricComponent,
+    FeelingsComponent,
     PlayerComponent,
     InfoComponent,
     CallbackComponent,
@@ -50,6 +55,7 @@ import { SafePipe } from './index/results/components/player/pipes/safe.pipe';
     MatInputModule,
     FormsModule,
     FontAwesomeModule,
+    CountUpModule,
     NgCircleProgressModule.forRoot({
       backgroundPadding: 7,
       radius: 100,

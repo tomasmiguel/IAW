@@ -1,0 +1,13 @@
+<div class="lyric-section" *ngIf="formattedLyric">
+    <h1 class="lyric-title">LETRA DE ‘{{track.name}}’</h1>
+    <table class="lyric-song">
+        <tr *ngFor="let row of formattedLyric">
+            <td *ngIf='row'>
+                {{row}}
+            </td>
+            <td *ngIf="!row">
+               <br><br>
+            </td>
+        </tr>
+    </table>
+</div>
