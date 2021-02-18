@@ -9,6 +9,7 @@ $altura : 43px;
   flex-wrap      : wrap;
   margin         : 30px 0;
   flex-direction : column;
+  min-height     : 93vh;
 }
 
 .data {
@@ -18,10 +19,16 @@ $altura : 43px;
 }
 
 .data-input-layout {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display   : inline-block;
+  text-align: center;
 }
+
+.form-control:focus {
+  border-color: rbga(0, 0, 0, 0) !important;
+  box-shadow  : 0 1px 1px rgba(0, 0, 0, 0) !important;
+}
+
+/*
 
 .data-input {
   text-align: center;
@@ -30,7 +37,6 @@ $altura : 43px;
   outline   : 0;
   height    : $altura;
 }
-
 input[name="artist"] {
   border-radius     : 50px 0 0 50px;
   border-right-width: 0px;
@@ -40,7 +46,7 @@ input[name="artist"] {
 input[name="song"] {
   border-radius: 0 50px 50px 0;
   padding-left : 15px;
-}
+}*/
 
 .search {
   background-image: -webkit-linear-gradient(top, #f8f9fa, #f8f9fa);
@@ -74,3 +80,24 @@ input[name="song"] {
 .search span {
   font-size: 16px;
 }
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 768px) {
+
+  .data {
+    width          : 90%;
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 576px) {}

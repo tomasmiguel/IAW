@@ -1,5 +1,5 @@
 <div class="col-12">
-  <div *ngIf="(isSearching && !results) || (results && !results.emotion && !results.sentiment)">
+  <div class="loading animated fadeIn" *ngIf="(isSearching && !results) || (results && !results.emotion && !results.sentiment)">
     <iaw-loading></iaw-loading>
   </div>
   <div *ngIf="results && results.emotion && results.sentiment">

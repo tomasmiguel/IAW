@@ -8,48 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'final-iaw';
-  public text = '';
-  public language = '';
 
 
-  constructor(
-    private _search: SearchService
-  ) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.getSentiment();
-  }
-
-  // tslint:disable-next-line: typedef
-  async getSentiment() {
-
-    /* const { result } = await this._search.getLyrics('soda stereo', 'profugos').toPromise();
-    let text = result.track.text;
-    let language = result.track.lang.code;
-
-    if (language === 'xx') {
-      const { languages } = await this._search.identifyLanguage(text).toPromise();
-      language = languages[0].language;
+    if (!localStorage.getItem('refresh_token')) {
+      localStorage.setItem('resfresh_token', 'AQBCkENtq4tss2i5njUQJaNmMB6rV7k7GHmEB0QiDQA61IfxOaahJqUUbWGJnnvBR4uo_Zz9YE0E6HNwCn3-hgPDawNlso8nZ2ZuWszaAE91_r72GIEPwWMuvU-6rsdiwDM');
     }
-
-    if (language !== 'en') {
-      const { translations } = await this._search.translateText([text], language, 'en').toPromise();
-      text = translations[0].translation;
-    }
-
-    const { emotion: { document: { emotion } } } = await this._search.getSentiment(text).toPromise();
-
-    console.log(emotion);
-
-    const { result : resultSentim } = await this._search.getSentimApi(text).toPromise();
-
-    console.log(resultSentim); */
-
   }
-
-
-
 
 
 }

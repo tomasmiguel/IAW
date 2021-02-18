@@ -48,9 +48,9 @@ export class PlayerComponent implements OnInit {
     }
   }
 
-  getRefreshToken(refresh_token: string | null): void {
-    if (refresh_token) {
-      this._player.getRefreshToken(refresh_token).subscribe(
+  getRefreshToken(refreshToken: string | null): void {
+    if (refreshToken) {
+      this._player.getRefreshToken(refreshToken).subscribe(
         (response) => {
           this.getTrack(response.access_token);
         },

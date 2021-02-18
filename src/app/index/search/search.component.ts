@@ -33,8 +33,20 @@ export class SearchComponent implements OnInit {
     if (!this.searchForm.invalid) {
       this.isSearching = true;
       this.error = false;
+      this.scroll();
       this.getLyrics();
     }
+  }
+
+  private scroll(): void {
+    const resultsDiv = document.getElementById('results');
+    /* console.log(resultsDiv);
+    resultsDiv?.scrollIntoView({block: "end", behavior: "smooth"}); */
+    resultsDiv?.scroll({
+      top: 100,
+      left: 100,
+      behavior: 'smooth'
+    });
   }
 
   async getSentiments() {
