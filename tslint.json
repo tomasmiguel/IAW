@@ -140,6 +140,7 @@
       true,
       "attribute",
       "app",
+      "iaw",
       "camelCase"
     ],
     "component-selector": [

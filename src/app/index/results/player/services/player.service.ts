@@ -1,4 +1,4 @@
-import { spotify } from './../../../../../global/global';
+import { spotify } from './../../../../global/global';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';

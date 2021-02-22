@@ -1,4 +1,4 @@
-import { Song } from './../../../search/models/song';
+import { Song } from './../../search/models/song';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

@@ -1,6 +1,6 @@
-import { spotify } from './../../../../global/global';
+import { spotify } from './../../../global/global';
 import { PlayerService } from './services/player.service';
-import { Song } from './../../../search/models/song';
+import { Song } from './../../search/models/song';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

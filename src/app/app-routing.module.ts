@@ -1,4 +1,4 @@
-import { CallbackComponent } from './index/results/components/callback/callback.component';
+import { CallbackComponent } from './index/results/callback/callback.component';
 import { IndexComponent } from './index/index.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
