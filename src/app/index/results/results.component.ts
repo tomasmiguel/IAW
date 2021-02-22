@@ -2,6 +2,7 @@ import { Song } from './../search/models/song';
 import { Component, Input, OnInit } from '@angular/core';
 
 
+
 @Component({
   selector: 'iaw-results',
   templateUrl: './results.component.html',
@@ -13,7 +14,9 @@ export class ResultsComponent implements OnInit {
   @Input() song: Song;
 
 
-  constructor() { }
+  constructor() {
+    document.getElementById("results-section-id")?.scrollIntoView({block: "end", behavior: "smooth"});
+   }
 
   ngOnInit(): void { }
 }

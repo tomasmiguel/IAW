@@ -1,8 +1,7 @@
 import { Song } from './models/song';
 import { SearchService } from './services/search.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 
 @Component({
   selector: 'iaw-search',
@@ -17,7 +16,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private _search: SearchService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private elem: ElementRef
   ) {
     this.searchForm = this.formBuilder.group({
       artist: [{ value: null, disabled: false }, [Validators.required]],
@@ -37,17 +37,21 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  async getSentiments() {
+  async getSentiments(): Promise<void> {
     if (this.song) {
       this._search.getSentiment(this.song.track.text_en).subscribe(
         ({ result }) => {
-          if (this.song) { this.song.sentiment = result; }
+          if (this.song) {
+            setTimeout(() => {
+              this.song.sentiment = result;
+            }, 1000);
+          }
         }
       );
     }
   }
 
-  async getEmotions() {
+  async getEmotions(): Promise<void> {
     if (this.song) {
       this._search.getEmotions(this.song.track.text_en).subscribe(
         ({ emotion: { document: { emotion } } }) => {
@@ -57,7 +61,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  async translate() {
+  async translate(): Promise<void> {
     if (this.song) {
       const { translations: [first] } =
         await this._search.translateText([this.song.track.text], this.song.track.lang.code, 'en').toPromise();
@@ -65,17 +69,15 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  async identifyLanguage() {
+  async identifyLanguage(): Promise<void> {
     if (this.song) {
       const { languages: [first] } = await this._search.identifyLanguage(this.song.track.text).toPromise();
       this.song.track.lang.code = first.language;
     }
   }
 
-  async getLyrics() {
+  async getLyrics(): Promise<void> {
     const { artist, song } = this.searchForm.value;
-    /* const artist = 'Gustavo cerati';
-    const song = 'crimen'; */
 
     this._search.getLyrics(artist, song).subscribe(
       async ({ result }) => {
