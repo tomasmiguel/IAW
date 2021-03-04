@@ -1,12 +1,17 @@
-footer {
-  display        : flex;
-  justify-content: space-around;
-  align-items    : flex-end;
-  height         : 5vh;
-  padding-bottom : 4px;
-  position: fixed;
-  width: 100vh;
-  
+footer {    
+    display: flex;
+    justify-content: space-around;
+    align-items: unset;
+    height: 7vh;
+    padding-bottom: 4px;
+    bottom: 0;
+    width: 100%;
+    margin-top: -1.313rem;
+    background-color: currentcolor;
+}
+
+.footer-copyright {
+  color: floralwhite;
 }
 
 .info {

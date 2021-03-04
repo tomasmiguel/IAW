@@ -2,11 +2,14 @@
 .feeling-section {
   text-align: center;
   display: grid;
+  border-top-style: inset;
+  border-right-style: inherit;
+  border-bottom-style: ridge;
 }
 
 .feeling-title {
-  padding-bottom: 20px;
-  padding-top: 40px;
+  padding-bottom: 1.25rem;
+  padding-top: 2.5rem;
   text-shadow: 0px 0px 25px #91bff2;
   width: 100vw;
 }

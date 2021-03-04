@@ -44,7 +44,7 @@ export class SearchComponent implements OnInit {
           if (this.song) {
             setTimeout(() => {
               this.song.sentiment = result;
-            }, 1000);
+            }, 1400);
           }
         }
       );

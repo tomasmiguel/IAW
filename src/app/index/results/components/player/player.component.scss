@@ -1,14 +1,20 @@
-$height : 300px;
+$height : 18.75rem;
+
+.player-section {
+  margin-top: 3rem;
+  border-bottom-style: groove;
+}
+
 
 .player {
   //max-width: 100%;
-  width : 400px;
+  width : 25rem;
   height: $height;
 }
 
 
 .login {
-  width              : 400px;
+  width              : 25rem;
   height             : $height;
   background-image   : url('/assets/bg/player-no-login.svg');
   background-size    : 200% auto;

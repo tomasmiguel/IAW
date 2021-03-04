@@ -2,11 +2,23 @@
 .lyric-section {
   text-align: center;
   display: grid;
+  border-bottom-style: solid;
+  margin-bottom: 20px;
 }
+
+// .lyric-section:before
+// {
+//   height: 30px;
+//   border-radius: 0px 0px 0px 40px;
+//   margin-left: 6.7rem;
+//   align-content: center;
+//   vertical-align: middle;
+//   content: "";
+// }
 
 .lyric-title {
   padding-bottom: 20px;
-  padding-top: 40px;
+  padding-top: 2.5rem;
   text-shadow: 0px 0px 25px #91bff2;
   width: 100vw;
 }
@@ -17,4 +29,5 @@
   border-collapse:separate; 
   border-spacing: 0 0.5em;
 }
+
 

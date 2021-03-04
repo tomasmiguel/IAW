@@ -1,3 +1,23 @@
+.results-section {
+  min-width: 100% !important;
+}
+
+.background {
+  background-image: url("../../../assets/bg/bg-white.jpg");
+  background-size: cover; 
+}
+
+.results-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    text-shadow: 0px 0px 25px #a8f9ee;
+}
+
+.particular-feeling {
+  display: inline-grid;
+  text-align: center;
+  text-shadow: 0px 0px 25px var(--color);
+}
 
 .player-info{
   min-height: 70vh;
@@ -9,4 +29,16 @@
   align-content: center;
   background-color: #FFF;
   width: 100%;
+}
+
+.player-info:before
+{
+  width: 10%;
+  left: 0px;
+  height: 100%;
+  align-items: baseline;
+  vertical-align: middle;
+  position: absolute;
+  content: "";
+  border-top-right-radius: 10%;
 }
