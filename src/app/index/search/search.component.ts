@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
     if (!this.searchForm.invalid) {
       this.isSearching = true;
       this.error = false;
-      this.scroll();
+      //this.scroll();
       this.getLyrics();
     }
   }
