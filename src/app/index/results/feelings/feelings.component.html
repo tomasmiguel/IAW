@@ -1,18 +1,18 @@
 <div class="feeling-section">
-    <h1 class="feeling-title">SENTIMIENTO DE ‘{{trackName}}’</h1>
-    <section>
+    <h1 class="feeling-title">Emosiones de ‘{{trackName}}’ de {{artistName}}</h1>
+    <section id="feeling-section-id">
         <!-- ANGER -->
         <div class="particular-feeling" style="--color: #df1515;">
             <h2 >ENFADO</h2>
-            <circle-progress 
+            <circle-progress
                 title="Ira\Enfado"
                 [outerStrokeColor]= "'#df1515'"
                 [imageSrc]="Sentims.ANGER.url"
                 [percent]="Sentims.ANGER.percentage"
-                [animationDuration]="Sentims.ANGER.animationTime" 
+                [animationDuration]="Sentims.ANGER.animationTime"
             >
             </circle-progress>
-            <h2 [countUp]="Sentims.ANGER.percentage" 
+            <h2 [countUp]="Sentims.ANGER.percentage"
                 [options]= "{
                     decimalPlaces: 1,
                     separator: '.',
@@ -30,10 +30,10 @@
                 [outerStrokeColor]= "'#29c51b'"
                 [imageSrc]="Sentims.DISGUST.url"
                 [percent]="Sentims.DISGUST.percentage"
-                [animationDuration]="Sentims.DISGUST.animationTime" 
+                [animationDuration]="Sentims.DISGUST.animationTime"
             >
             </circle-progress>
-            <h2 [countUp]="Sentims.DISGUST.percentage" 
+            <h2 [countUp]="Sentims.DISGUST.percentage"
                 [options]= "{
                     decimalPlaces: 1,
                     separator: '.',
@@ -46,15 +46,15 @@
         <!-- FEAR -->
         <div class="particular-feeling" style="--color: #661694;">
             <h2>MIEDO</h2>
-            <circle-progress 
+            <circle-progress
                 title="Miedo\Temor"
                 [outerStrokeColor]= "'#661694'"
                 [imageSrc]="Sentims.FEAR.url"
                 [percent]="Sentims.FEAR.percentage"
-                [animationDuration]="Sentims.FEAR.animationTime"                
+                [animationDuration]="Sentims.FEAR.animationTime"
             >
             </circle-progress>
-            <h2 [countUp]="Sentims.FEAR.percentage" 
+            <h2 [countUp]="Sentims.FEAR.percentage"
                 [options]= "{
                     decimalPlaces: 1,
                     separator: '.',
@@ -67,15 +67,15 @@
         <!-- JOY -->
         <div class="particular-feeling" style="--color: #ea6912;">
             <h2>ALEGRIA</h2>
-            <circle-progress 
+            <circle-progress
                 title="Alegría\Placer"
                 [outerStrokeColor]= "'#ea6912'"
                 [imageSrc]="Sentims.JOY.url"
                 [percent]="Sentims.JOY.percentage"
-                [animationDuration]="Sentims.JOY.animationTime" 
+                [animationDuration]="Sentims.JOY.animationTime"
             >
             </circle-progress>
-            <h2 [countUp]="Sentims.JOY.percentage" 
+            <h2 [countUp]="Sentims.JOY.percentage"
                 [options]= "{
                     decimalPlaces: 1,
                     separator: '.',
@@ -88,16 +88,16 @@
         <!-- SADNESS -->
         <div class="particular-feeling" style="--color: #4255e3;">
             <h2>TRISTEZA</h2>
-            <circle-progress 
+            <circle-progress
                 #tristeza
                 title="Tristeza\Pena"
                 [outerStrokeColor]= "'#4255e3'"
                 [imageSrc]="Sentims.SADNESS.url"
                 [percent]="Sentims.SADNESS.percentage"
-                [animationDuration]="Sentims.SADNESS.animationTime" 
+                [animationDuration]="Sentims.SADNESS.animationTime"
             >
             </circle-progress>
-            <h2 [countUp]="Sentims.SADNESS.percentage" 
+            <h2 [countUp]="Sentims.SADNESS.percentage"
                 [options]= "{
                     decimalPlaces: 1,
                     separator: '.',

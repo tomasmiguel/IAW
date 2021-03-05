@@ -22,13 +22,20 @@ export class PlayerComponent implements OnInit {
   }
 
   login(): void {
-    const spotifyLoginWindow = window.open('https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09');
+    let params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=300,height=900,left=100,top=100';
+    const spotifyLoginWindow = window.open(
+      'https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09',
+      'Sportify',
+      params
+    );
 
-    if (spotifyLoginWindow) {
+    if(spotifyLoginWindow){
+      console.log('abri la ventana');
       spotifyLoginWindow.onbeforeunload = () => {
+        console.log('cerre la ventana');
         const token: string | null = (localStorage.getItem('access_token'));
         this.getTrack(token);
-      };
+      }
     }
   }
 

@@ -81,6 +81,15 @@ input[name="song"] {
   font-size: 16px;
 }
 
+.navbar-brand {
+  max-height: 100px;
+}
+
+.btn-nav {
+  margin-left: 5px;
+  border-radius: 10px !important;
+}
+
 @media only screen and (max-width: 1200px) {}
 
 @media only screen and (max-width: 992px) {}

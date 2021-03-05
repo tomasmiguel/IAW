@@ -33,12 +33,18 @@ export class SearchComponent implements OnInit {
     if (!this.searchForm.invalid) {
       this.isSearching = true;
       this.error = false;
-      //this.scroll();
       this.getLyrics();
     }
   }
 
-  async getSentiments(): Promise<void> {
+  private scroll(): void {
+    setTimeout(() => {
+      const resultsDiv = document.getElementById('navbar');
+      resultsDiv?.scrollIntoView({ block: "start", behavior: "smooth" })
+    }, 500);
+  }
+
+  async getSentiments() {
     if (this.song) {
       this._search.getSentiment(this.song.track.text_en).subscribe(
         ({ result }) => {
@@ -52,14 +58,14 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  async getEmotions(): Promise<void> {
-    if (this.song) {
-      this._search.getEmotions(this.song.track.text_en).subscribe(
-        ({ emotion: { document: { emotion } } }) => {
-          if (this.song) { this.song.emotion = emotion; }
-        }
-      );
-    }
+  async getEmotions() {
+    this._search.getEmotions(this.song.track.text_en).subscribe(
+      ({ emotion: { document: { emotion } } }) => {
+        this.song.emotion = emotion;
+        this.isSearching = false;
+        this.scroll();
+      }
+    );
   }
 
   async translate(): Promise<void> {
@@ -106,5 +112,6 @@ export class SearchComponent implements OnInit {
     this.isSearching = false;
     this.error = true;
   }
+
 
 }

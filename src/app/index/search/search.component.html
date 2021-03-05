@@ -1,20 +1,20 @@
 <div class="row">
-  <form class="buscador col-12 pl-0 pr-0" (submit)="search()" [formGroup]="searchForm"> <!-- *ngIf="!song || (song && !song.emotion)"  -->
+  <form id="buscador" class="buscador col-12 pl-0 pr-0" (submit)="search()" [formGroup]="searchForm">
     <iaw-logo></iaw-logo>
 
     <div class="data content-form mt-4 text-center">
       <div class="data-input-layout">
         <mat-form-field>
-          <input matInput class="form-control dataInput" type="text" value="cerati"  tabindex="1" name="artist" formControlName="artist"
-            placeholder="Artista o Banda" autocomplete="on">
+          <input matInput class="form-control dataInput" type="text" value="cerati" tabindex="1" name="artist"
+            formControlName="artist" placeholder="Artista o Banda" autocomplete="on">
           <mat-error>Debe ingresar un artista o banda</mat-error>
         </mat-form-field>
       </div>
 
       <div class="data-input-layout">
         <mat-form-field>
-          <input matInput class="form-control dataInput" type="text" value="crimen" tabindex="2" name="song" formControlName="song"
-            placeholder="Título de una canción" autocomplete="on">
+          <input matInput class="form-control dataInput" type="text" value="crimen" tabindex="2" name="song"
+            formControlName="song" placeholder="Título de una canción" autocomplete="on">
           <mat-error>Debe ingresar el título de una canción</mat-error>
         </mat-form-field>
       </div>
@@ -27,12 +27,39 @@
 
 
     <div *ngIf="error" class="data col-12 text-danger">
-        La canción no existe o su letra no está disponible
+      La canción no existe o su letra no está disponible
+    </div>
+
+    <div *ngIf="isSearching" class="col-12 text-center mt-2">
+      <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
 
   </form>
 </div>
 
-<div id="results" class="row">
+<nav *ngIf="song && song.emotion" id="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#"><img src="/assets/logo/logo-2.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="btn-nav btn btn-light text-dark" href="#feelings">Emosiones</a>
+          <a class="btn-nav btn btn-light text-dark" href="#player">Reproductor</a>
+          <a class="btn-nav btn btn-light text-dark" href="#lyrics">Letra</a>
+          <a class="btn-nav btn btn-outline-light" href="#">Nueva búsqueda</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="results" class="row results-section">
   <iaw-results [isSearching]="isSearching" [song]="song"></iaw-results>
 </div>

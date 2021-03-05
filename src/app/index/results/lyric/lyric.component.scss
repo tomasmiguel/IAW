@@ -2,9 +2,9 @@
 .lyric-section {
   text-align: center;
   display: grid;
-  border-top-style: ridge;
-  border-bottom-style: solid;
-  padding-bottom: 9.25rem;
+  background-image: url('/assets/bg/bg-white.jpg');
+  background-position: center;
+  background-size: auto 100% ;
 }
 
 .lyric-title {
@@ -17,7 +17,7 @@
 .lyric-song {
   font-family: cursive;
   font-size: large;
-  border-collapse:separate; 
+  border-collapse:separate;
   border-spacing: 0 0.5em;
 }
 
