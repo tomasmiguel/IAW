@@ -21,10 +21,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CountUpModule } from 'ngx-countup';
 import { LyricComponent } from './index/results/lyric/lyric.component';
 import { FeelingsComponent } from './index/results/feelings/feelings.component';
-import { PlayerComponent } from './index/results/components/player/player.component';
-import { InfoComponent } from './index/results/components/info/info.component';
-import { CallbackComponent } from './index/results/components/callback/callback.component';
-import { SafePipe } from './index/results/components/player/pipes/safe.pipe';
+import { PlayerComponent } from './index/results/player/player.component';
+import { InfoComponent } from './index/results/info/info.component';
+import { CallbackComponent } from './index/results/callback/callback.component';
+import { SafePipe } from './index/results/player/pipes/safe.pipe';
 
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Emotion } from './emotion';
 import { Track } from './track';
-import { SpotifyTrack } from '../../results/components/player/models/spotify-track';
+import { SpotifyTrack } from '../../results/player/models/spotify-track';
 
 export class Song {
   public constructor(

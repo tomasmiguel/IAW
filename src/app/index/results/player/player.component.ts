@@ -1,6 +1,6 @@
-import { spotify } from './../../../../global/global';
+import { spotify } from './../../../global/global';
 import { PlayerService } from './services/player.service';
-import { Song } from './../../../search/models/song';
+import { Song } from './../../search/models/song';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -12,38 +12,28 @@ export class PlayerComponent implements OnInit {
   @Input() song: Song;
 
 
+
   constructor(
     private _player: PlayerService
   ) { }
 
   ngOnInit(): void {
-
-
-    if (this.isLogued()) {
-      this.getTrack();
-    }
+    this.getRefreshToken(localStorage.getItem('refresh_token'));
   }
-
-
-  isLogued(): boolean {
-    const token = localStorage.getItem('access_token');
-    return (token && token.length && token.length > 0) ? true : false;
-  }
-
 
   login(): void {
     const spotifyLoginWindow = window.open('https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09');
 
     if (spotifyLoginWindow) {
       spotifyLoginWindow.onbeforeunload = () => {
-        this.getTrack();
+        const token: string | null = (localStorage.getItem('access_token'));
+        this.getTrack(token);
       };
     }
   }
 
 
-  getTrack() {
-    const token = (localStorage.getItem('access_token'));
+  getTrack(token: string | null): void {
 
     if (token) {
       this._player.getTrack(this.song.track.name + ' ' + this.song.artist.name, token).subscribe(
@@ -52,10 +42,24 @@ export class PlayerComponent implements OnInit {
           console.log(first);
         },
         (error) => {
-          console.log(error);
+          this._player.deleteToken();
         }
       );
     }
   }
+
+  getRefreshToken(refreshToken: string | null): void {
+    if (refreshToken) {
+      this._player.getRefreshToken(refreshToken).subscribe(
+        (response) => {
+          this.getTrack(response.access_token);
+        },
+        (error) => this._player.deleteToken()
+      );
+    } else {
+      this._player.deleteToken();
+    }
+  }
+
 
 }
