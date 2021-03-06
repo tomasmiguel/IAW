@@ -1,7 +1,7 @@
 import { spotify } from './../../../global/global';
 import { PlayerService } from './services/player.service';
 import { Song } from './../../search/models/song';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'iaw-player',
@@ -10,6 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
   @Input() song: Song;
+  @ViewChild('clickbutton', { static: false }) clickbutton: ElementRef;
 
 
 
@@ -34,7 +35,8 @@ export class PlayerComponent implements OnInit {
       spotifyLoginWindow.onbeforeunload = () => {
         console.log('cerre la ventana');
         const token: string | null = (localStorage.getItem('access_token'));
-        this.getTrack(token);
+        this.getRefreshToken(localStorage.getItem('refresh_token'));
+        this.clickbutton.nativeElement.click();
       }
     }
   }
@@ -46,7 +48,7 @@ export class PlayerComponent implements OnInit {
       this._player.getTrack(this.song.track.name + ' ' + this.song.artist.name, token).subscribe(
         ({ tracks: { items: [first] } }) => {
           this.song.spotifyTrack = first;
-          console.log(first);
+          console.log(this.song.spotifyTrack);
         },
         (error) => {
           this._player.deleteToken();
