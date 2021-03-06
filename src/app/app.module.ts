@@ -25,6 +25,7 @@ import { PlayerComponent } from './index/results/player/player.component';
 import { InfoComponent } from './index/results/info/info.component';
 import { CallbackComponent } from './index/results/callback/callback.component';
 import { SafePipe } from './index/results/player/pipes/safe.pipe';
+import { LoginComponent } from './index/login/login.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { SafePipe } from './index/results/player/pipes/safe.pipe';
     InfoComponent,
     CallbackComponent,
     SafePipe,
+    LoginComponent,
 
   ],
   imports: [

@@ -34,6 +34,7 @@ export class SearchComponent implements OnInit {
       this.isSearching = true;
       this.error = false;
       this.getLyrics();
+
     }
   }
 
@@ -64,6 +65,7 @@ export class SearchComponent implements OnInit {
         this.song.emotion = emotion;
         this.isSearching = false;
         this.scroll();
+        this.searchForm.reset();
       }
     );
   }
