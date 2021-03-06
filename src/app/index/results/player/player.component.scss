@@ -6,14 +6,14 @@ $height : 18.75rem;
 
 
 .player {
-  //max-width: 100%;
-  width : 25rem;
+  width : 100%;
   height: $height;
 }
 
 
 .login {
-  width              : 25rem;
+  width              : 400px;
+  max-width          : 100%;
   height             : $height;
   background-image   : url('/assets/bg/player-no-login.svg');
   background-size    : 200% auto;
@@ -21,28 +21,38 @@ $height : 18.75rem;
   background-color   : #2d47b95e;
   color              : #2d47b9;
   display            : flex;
-  flex-direction: column;
-  opacity: 1;
-  justify-content: center;
-  align-items: center;
+  flex-direction     : column;
+  opacity            : 1;
+  justify-content    : center;
+  align-items        : center;
 }
 
-.login h4{
-  font-size: 35px;
+.login h4 {
+  font-size : 35px;
   margin-top: 30px;
 }
 
 .login .logos {
-  margin-top: 30px;
-  font-size: 40px;
+  margin-top    : 30px;
+  font-size     : 40px;
   letter-spacing: 30px;
-  padding-left: 30px;
+  padding-left  : 30px;
 }
 
-.login .btn{
-  margin-top: 35px;
-  font-size: 20px;
-  padding: 5px 20px;
+.login .btn {
+  margin-top   : 35px;
+  font-size    : 20px;
+  padding      : 5px 20px;
   border-radius: 30px !important;
 }
 
+
+@media only screen and (max-width: 768px) {
+
+  .login {
+    width        : 300px;
+    margin-top   : 30px !important;
+    margin-bottom: 30px !important;
+  }
+
+}

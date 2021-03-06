@@ -1,34 +1,42 @@
 .info {
-  width: 100%;
-  min-width: 25rem;
+  width     : 100%;
+  max-width : 100%;
   min-height: 18.125rem;
 }
 
-.info .title{
-  width: 100%;
-	font-family: 'Montserrat', 'Open Sans', sans-serif;
-  font-size: 2.5rem;
-  color: #505050;
-  text-align: left;
+.info .title {
+  width        : 100%;
+  font-family  : 'Montserrat', 'Open Sans', sans-serif;
+  font-size    : 2.5rem;
+  color        : #505050;
+  text-align   : left;
   margin-bottom: 1.563rem;
-  font-weight: bolder;
+  font-weight  : bolder;
+  line-height  : 40px;
 }
 
-.info .data{
-  color: #8d8d8d!important;
+.info .data {
+  color         : #8d8d8d !important;
   padding-bottom: 0.938rem;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom : 1px solid #e5e5e5;
 }
 
-.list-group-item{
-  border: 0 solid #aaa !important;
-  border-bottom: 1px solid #e5e5e5 !important;
-  padding-left: 0 !important;
-  color: #505050 !important;
+.list-group-item {
+  border          : 0 solid #aaa !important;
+  border-bottom   : 1px solid #e5e5e5 !important;
+  padding-left    : 0 !important;
+  color           : #505050 !important;
   background-color: unset !important;
 }
 
-.list-group-item .badge{
-  font-size: 0.75rem !important;
+.list-group-item .badge {
+  font-size  : 0.75rem !important;
   font-weight: normal !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .info {
+    margin-bottom: 40px;
+  }
 }

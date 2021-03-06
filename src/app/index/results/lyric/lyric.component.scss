@@ -1,60 +1,73 @@
-
 .lyric-section {
-  text-align: center;
-  display: grid;
-  background-image: url('/assets/bg/bg-music.jpg');
+  text-align         : center;
+  display            : grid;
+  background-image   : url('/assets/bg/bg-music.jpg');
   background-position: center bottom;
-  background-size: auto 100% ;
-  min-height: 100vh;
-  padding-bottom: 30px;
+  background-size    : auto 100%;
+  min-height         : 100vh;
+  padding-bottom     : 30px;
 }
 
 .lyric-title {
   margin-bottom: 1.25rem;
-  padding-top: 2.5rem;
-  text-shadow: 0px 0px 25px #91bff2;
-  width: 100vw;
+  padding-top  : 2.5rem;
+  text-shadow  : 0px 0px 25px #91bff2;
+  width        : 100vw;
 }
 
 .lyric-song {
-  border-collapse:separate;
-  border-spacing: 0 0.5em;
-  margin-top: 30px;
+  border-collapse: separate;
+  border-spacing : 0 0.5em;
+  margin-top     : 30px;
 }
 
 
-.title{
-  float: left;
+.title {
+  float                : left;
   background-attachment: fixed;
-  /* background-image: url('/assets/folder/bg-completo-2.jpeg'); */
-  background-color: #343a40 !important;
-  background-size: 100% auto;
-  background-position: center;
-  margin-bottom: 20px;
-  clear: both;
-}
-.title .gradient{
-  float: left;
-  background-color: rgba(0,0,0,0.6);
+  /* background-image  : url('/assets/folder/bg-completo-2.jpeg'); */
+  background-color     : #343a40 !important;
+  background-size      : 100% auto;
+  background-position  : center;
+  margin-bottom        : 20px;
+  clear                : both;
 }
 
-h2{
-  color: #EEEFEF;
-  font-size: 35px;
-  font-family: 'Montserrat', cursive;
+.title .gradient {
+  float           : left;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+h2 {
+  color         : #EEEFEF;
+  font-size     : 35px;
+  font-family   : 'Montserrat', cursive;
   text-transform: uppercase;
-  padding: 30px 0;
+  padding       : 30px 0;
 }
 
 .line-song {
-  font-size: 20px !important;
-  border-left: 0.25rem solid #e2dcdbd7;
+  font-size     : 20px !important;
+  border-left   : 0.25rem solid #e2dcdbd7;
   padding-bottom: 12px;
+
   span {
-    display: inline;
-    background: #f3f3f3d7;;
-    color: #222222;
+    display   : inline;
+    background: #f3f3f3d7;
+    ;
+    color  : #222222;
     padding: 0.25rem;
   }
 }
 
+
+@media only screen and (max-width: 768px) {
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .line-song {
+    font-size: 16px !important;
+  }
+}

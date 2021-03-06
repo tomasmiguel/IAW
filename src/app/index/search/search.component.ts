@@ -43,6 +43,9 @@ export class SearchComponent implements OnInit {
       const resultsDiv = document.getElementById('navbar');
       resultsDiv?.scrollIntoView({ block: "start", behavior: "smooth" })
     }, 500);
+    setTimeout(()=>{
+      this.searchForm.reset();
+    }, 2000);
   }
 
   async getSentiments() {
@@ -65,7 +68,6 @@ export class SearchComponent implements OnInit {
         this.song.emotion = emotion;
         this.isSearching = false;
         this.scroll();
-        this.searchForm.reset();
       }
     );
   }
