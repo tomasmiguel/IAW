@@ -11,7 +11,7 @@ import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class PlayerComponent implements OnInit {
   @Input() song: Song;
   @ViewChild('clickbutton', { static: false }) clickbutton: ElementRef;
-
+  public loading = false;
 
 
   constructor(
@@ -19,11 +19,15 @@ export class PlayerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getRefreshToken(localStorage.getItem('refresh_token'));
+    this.loading = true;
+    const refreshToken = localStorage.getItem('refresh_token');
+    (refreshToken)
+      ? this.getRefreshToken(refreshToken)
+      : this.loading = false;
   }
 
   login(): void {
-    let params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=300,height=900,left=100,top=100';
+    let params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=500,left=100,top=100';
     const spotifyLoginWindow = window.open(
       'https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09',
       'Sportify',
@@ -31,43 +35,36 @@ export class PlayerComponent implements OnInit {
     );
 
     if(spotifyLoginWindow){
-      console.log('abri la ventana');
       spotifyLoginWindow.onbeforeunload = () => {
-        console.log('cerre la ventana');
-        const token: string | null = (localStorage.getItem('access_token'));
-        this.getRefreshToken(localStorage.getItem('refresh_token'));
-        this.clickbutton.nativeElement.click();
+        const token = localStorage.getItem('access_token');
+        if(token) {
+          this.getTrack(token);
+          console.warn('buscando canción')
+        }
       }
     }
   }
 
 
-  getTrack(token: string | null): void {
-
-    if (token) {
-      this._player.getTrack(this.song.track.name + ' ' + this.song.artist.name, token).subscribe(
-        ({ tracks: { items: [first] } }) => {
+  getTrack(token: string): void {
+    this.loading = true;
+    this._player.getTrack(this.song.track.name + ' ' + this.song.artist.name, token).subscribe(
+      ({ tracks: { items: [first] } }) => {
           this.song.spotifyTrack = first;
-          console.log(this.song.spotifyTrack);
-        },
-        (error) => {
-          this._player.deleteToken();
-        }
-      );
-    }
+          this.loading = false;
+      },
+      ( error ) => this._player.deleteToken()
+    );
   }
 
-  getRefreshToken(refreshToken: string | null): void {
-    if (refreshToken) {
-      this._player.getRefreshToken(refreshToken).subscribe(
-        (response) => {
-          this.getTrack(response.access_token);
-        },
-        (error) => this._player.deleteToken()
-      );
-    } else {
-      this._player.deleteToken();
-    }
+ getRefreshToken(refreshToken: string): void {
+    this._player.getRefreshToken(refreshToken).subscribe(
+      ( {access_token} ) => {
+        localStorage.setItem('access_token', access_token);
+        this.getTrack(access_token);
+      },
+      ( error ) => this._player.deleteToken()
+    );
   }
 
 
