@@ -14,7 +14,7 @@ export class FeelingsComponent implements OnInit {
   @Input() artistName: string;
 
   countUp = new CountUpModule();
-  DEFAULT_ANIMATION_TIME = 5000;
+  DEFAULT_ANIMATION_TIME = 7000;
 
   Sentims = {
     ANGER: {

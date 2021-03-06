@@ -1,12 +1,11 @@
-
-
 <div class="float-left col-12">
   <!-- <div class="loading animated fadeIn" *ngIf="(isSearching && !song) || (song && !song.emotion && !song.track && !song.sentiment)">
     <iaw-loading></iaw-loading>
   </div> -->
   <div id="feelings" *ngIf="song && song.emotion && song.track">
     <!-- seccion sentimientos-->
-    <iaw-feelings [feelings]="song.emotion" [trackName]="song.track.name" [artistName]="song.artist.name"></iaw-feelings>
+    <iaw-feelings [feelings]="song.emotion" [trackName]="song.track.name" [artistName]="song.artist.name">
+    </iaw-feelings>
 
     <!-- seccion spotify ??? -->
     <div id="player" *ngIf="song && song.emotion && song.sentiment" class="col-12 player-info">
@@ -18,5 +17,8 @@
     <div id="lyrics">
       <iaw-lyric [track]="song.track"></iaw-lyric>
     </div>
+
+
+    <iaw-footer></iaw-footer>
   </div>
 </div>
