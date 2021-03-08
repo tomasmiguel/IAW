@@ -41,11 +41,22 @@ export class SearchComponent implements OnInit {
   private scroll(): void {
     setTimeout(() => {
       const resultsDiv = document.getElementById('navbar');
-      resultsDiv?.scrollIntoView({ block: "start", behavior: "smooth" })
+      resultsDiv?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      document.querySelector('.arrow')?.classList.remove('d-none');
     }, 500);
-    setTimeout(()=>{
+    setTimeout(() => {
       this.searchForm.reset();
+      document.querySelector('#search')?.classList.add('d-none');
     }, 2000);
+  }
+
+  scrollToTop(): void {
+    document.getElementById('navbar')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  reset(): void {
+    this.searchForm.reset();
+    document.querySelector('#search')?.classList.remove('d-none');
   }
 
   async getSentiments() {
@@ -62,9 +73,10 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  async getEmotions() {
+  getEmotions(): void {
     this._search.getEmotions(this.song.track.text_en).subscribe(
-      ({ emotion: { document: { emotion } } }) => {
+      (response) => {
+        const { emotion: { document: { emotion } } } = response;
         this.song.emotion = emotion;
         this.isSearching = false;
         this.scroll();

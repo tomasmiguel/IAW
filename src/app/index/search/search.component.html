@@ -1,4 +1,4 @@
-<div class="row">
+<div id="search" class="row animated fadeInUp">
   <form id="buscador" class="buscador col-12 pl-0 pr-0" (submit)="search()" [formGroup]="searchForm">
     <iaw-logo></iaw-logo>
 
@@ -39,7 +39,7 @@
   </form>
 </div>
 
-<nav *ngIf="song && song.emotion" id="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav *ngIf="song && song.emotion" id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark float-left col-12">
   <div class="container">
     <a class="navbar-brand" href="#"><img src="/assets/logo/logo-2.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -53,13 +53,20 @@
           <a class="btn-nav btn btn-light text-dark" href="#feelings">Emociones</a>
           <a class="btn-nav btn btn-light text-dark" href="#player">Reproductor</a>
           <a class="btn-nav btn btn-light text-dark" href="#lyrics">Letra</a>
-          <a class="btn-nav btn btn-outline-light" href="#">Nueva búsqueda</a>
+          <a class="btn-nav btn btn-outline-light" (click)="reset()">Nueva búsqueda</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
+<div class="clearfix"></div>
+
 <div id="results" class="row results-section">
   <iaw-results [isSearching]="isSearching" [song]="song"></iaw-results>
 </div>
+
+
+<a class="arrow d-none animated backInDown" (click)="scrollToTop()">
+  <i class="fas fa-arrow-up"></i>
+</a>
