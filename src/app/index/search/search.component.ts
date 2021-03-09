@@ -1,7 +1,7 @@
 import { Song } from './models/song';
 import { SearchService } from './services/search.service';
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'iaw-search',
@@ -9,6 +9,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+
+  @ViewChild('mySearchForm') public mySearchForm: NgForm;
+
   public searchForm: FormGroup;
   public song: Song;
   public isSearching = false;
@@ -17,7 +20,6 @@ export class SearchComponent implements OnInit {
   constructor(
     private _search: SearchService,
     private formBuilder: FormBuilder,
-    private elem: ElementRef
   ) {
     this.searchForm = this.formBuilder.group({
       artist: [{ value: null, disabled: false }, [Validators.required]],
@@ -34,7 +36,6 @@ export class SearchComponent implements OnInit {
       this.isSearching = true;
       this.error = false;
       this.getLyrics();
-
     }
   }
 
@@ -45,17 +46,16 @@ export class SearchComponent implements OnInit {
       document.querySelector('.arrow')?.classList.remove('d-none');
     }, 500);
     setTimeout(() => {
-      this.searchForm.reset();
-      document.querySelector('#search')?.classList.add('d-none');
+     document.querySelector('#search')?.classList.add('d-none');
     }, 2000);
   }
 
   scrollToTop(): void {
-    document.getElementById('navbar')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+   document.getElementById('navbar')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   reset(): void {
-    this.searchForm.reset();
+    this.mySearchForm.resetForm();
     document.querySelector('#search')?.classList.remove('d-none');
   }
 
@@ -101,7 +101,6 @@ export class SearchComponent implements OnInit {
 
   async getLyrics(): Promise<void> {
     const { artist, song } = this.searchForm.value;
-
     this._search.getLyrics(artist, song).subscribe(
       async ({ result }) => {
         this.song = result;
@@ -123,11 +122,9 @@ export class SearchComponent implements OnInit {
     );
   }
 
-
   private setError(error: any): void {
     this.isSearching = false;
     this.error = true;
   }
-
 
 }

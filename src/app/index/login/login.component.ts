@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   login(): void {
     const params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=500,left=100,top=100';
     const spotifyLoginWindow = window.open(
-      'https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09',
+      'https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' +
+                encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09',
       'Sportify',
       params
     );
@@ -35,7 +36,5 @@ export class LoginComponent implements OnInit {
       }
     }, 200);
   }
-
-
 
 }
