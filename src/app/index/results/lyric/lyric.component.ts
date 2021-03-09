@@ -14,7 +14,7 @@ export class LyricComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.formattedLyric = this.track.text.split('\n');
+    this.formattedLyric = this.track.text.split(/\n|,/g);
   }
 
 }
