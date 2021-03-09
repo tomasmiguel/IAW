@@ -1,13 +1,20 @@
 <div class="lyric-section" *ngIf="formattedLyric">
-    <h1 class="lyric-title">LETRA DE ‘{{track.name}}’</h1>
-    <table class="lyric-song">
-        <tr *ngFor="let row of formattedLyric">
-            <td *ngIf='row'>
-                {{row}}
-            </td>
-            <td *ngIf="!row">
-               <br><br>
-            </td>
-        </tr>
-    </table>
+    <div class="float-left d-inline-block title col-12 p-0">
+      <div class="gradient float-left col-12 p-0">
+        <div class="container text-center pt-3">
+            <h2 id="title" class="animated fadeInDown">LETRA DE ‘{{track.name}}’</h2>
+        </div>
+      </div>
+  </div>
+    <div class="lyric-song">
+
+      <ng-container *ngFor="let row of formattedLyric">
+        <div *ngIf='row' class="line-song">
+          <span>{{row}}</span>
+        </div>
+        <div *ngIf='!row'>
+          <br /> <br />
+        </div>
+      </ng-container>
+    </div>
 </div>

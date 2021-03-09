@@ -1,24 +1,26 @@
+<div class="float-left col-12">
+  <!-- <div class="loading animated fadeIn" *ngIf="(isSearching && !song) || (song && !song.emotion && !song.track && !song.sentiment)">
+    <iaw-loading></iaw-loading>
+  </div> -->
+  <div id="feelings" *ngIf="song && song.emotion && song.track" class="float-left">
+    <!-- seccion sentimientos-->
+    <iaw-feelings [feelings]="song.emotion" [trackName]="song.track.name" [artistName]="song.artist.name">
+    </iaw-feelings>
+    <div class="clearfix"></div>
 
-
-<div class="col-12 results-section">
-    <div 
-      class="loading animated fadeIn" 
-      *ngIf="(isSearching && !song) || (song && (!song.emotion || !song.track || !song.sentiment))"
-      id="results"
-    >
-      <iaw-loading></iaw-loading>
+    <!-- seccion spotify ??? -->
+    <div id="player" *ngIf="song && song.emotion && song.sentiment" class="col-12 player-info float-left">
+      <iaw-player [song]="song"></iaw-player>
+      <iaw-info *ngIf="song.spotifyTrack" [song]="song"></iaw-info>
     </div>
-    <div *ngIf="song && song.emotion && song.track && song.sentiment" class="background">
-      <!-- seccion sentimientos-->
-      <iaw-feelings [feelings]="song.emotion" [trackName]="song.track.name"></iaw-feelings>
 
-      <!-- seccion spotify -->
-      <div *ngIf="song && song.emotion && song.sentiment" class="col-12 player-info">
-        <iaw-player [song]="song"></iaw-player>
-        <iaw-info *ngIf="song.spotifyTrack" [song]="song"></iaw-info>
-      </div>
-
-      <!-- seccion letra -->
+    <div class="clearfix"></div>
+    <!-- seccion letra -->
+    <div id="lyrics" class="float-left col-12 pl-0 pr-0">
       <iaw-lyric [track]="song.track"></iaw-lyric>
     </div>
+
+
+    <iaw-footer></iaw-footer>
   </div>
+</div>

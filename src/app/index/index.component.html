@@ -1,3 +1,4 @@
 <div class="pantalla">
-  <iaw-search></iaw-search>
+  <iaw-search *ngIf="login"></iaw-search>
+  <iaw-login *ngIf="!login" (loginConfirm)="login = $event"></iaw-login>
 </div>

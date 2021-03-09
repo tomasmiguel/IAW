@@ -1,5 +1,5 @@
-<div class="row">
-  <form class="buscador col-12 pl-0 pr-0" (submit)="search()" [formGroup]="searchForm"> <!-- *ngIf="!song || (song && !song.emotion)"  -->
+<div id="search" class="row animated fadeInUp">
+  <form id="buscador" class="buscador col-12 pl-0 pr-0" (submit)="search()" [formGroup]="searchForm">
     <iaw-logo></iaw-logo>
 
     <div class="data content-form mt-4 text-center">
@@ -27,12 +27,51 @@
 
 
     <div *ngIf="error" class="data col-12 text-danger">
-        La canción no existe o su letra no está disponible
+      La canción no existe o su letra no está disponible
+    </div>
+
+    <div *ngIf="isSearching" class="col-12 text-center mt-2">
+      <!-- <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;" role="status">
+        <span class="sr-only">Loading...</span>
+      </div> -->
+      <iaw-loading></iaw-loading>
     </div>
 
   </form>
 </div>
 
-<div id="results" class="row">
+<div class="clearfix"></div>
+
+<nav *ngIf="song && song.emotion" id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark col-12">
+  <div class="container">
+    <a class="navbar-brand" (click)="reset()"><img src="/assets/logo/logo-2.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="btn-nav btn btn-light text-dark" href="#feelings">Emociones</a>
+          <a class="btn-nav btn btn-light text-dark" href="#player">Reproductor</a>
+          <a class="btn-nav btn btn-light text-dark" href="#lyrics">Letra</a>
+          <a class="btn-nav btn btn-outline-light" (click)="reset()">Nueva búsqueda</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="clearfix"></div>
+
+<div id="results" class="row results-section float-left">
   <iaw-results [isSearching]="isSearching" [song]="song"></iaw-results>
 </div>
+
+
+<div class="clearfix"></div>
+
+<a class="arrow d-none animated backInDown" (click)="scrollToTop()">
+  <i class="fas fa-arrow-up"></i>
+</a>
