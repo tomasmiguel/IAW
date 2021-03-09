@@ -9,6 +9,7 @@ import { spotify } from './../../global/global';
 })
 export class LoginComponent implements OnInit {
   @Output() loginConfirm: EventEmitter<boolean> = new EventEmitter();
+  public windowsClose = false;
 
   constructor(
     private _player: PlayerService
@@ -18,19 +19,23 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    let params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=500,left=100,top=100';
+    const params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=500,left=100,top=100';
     const spotifyLoginWindow = window.open(
       'https://accounts.spotify.com/authorize?client_id=' + spotify.client_id + '&response_type=code&redirect_uri=' + encodeURI(spotify.redirect_uri) + '&scope=user-read-private%20user-read-email&state=34fFs29kd09',
       'Sportify',
       params
     );
 
-    if (spotifyLoginWindow) {
-      spotifyLoginWindow.onbeforeunload = () => {
-        if(localStorage.getItem('refresh_token'))
+    setInterval(() => {
+      if (!this.windowsClose) {
+        if (localStorage.getItem('refresh_token')) {
           this.loginConfirm.emit(true);
-          location.reload();
+          this.windowsClose = true;
+        }
       }
-    }
+    }, 200);
   }
+
+
+
 }

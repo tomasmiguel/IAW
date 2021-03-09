@@ -12,6 +12,7 @@ export class PlayerComponent implements OnInit {
   @Input() song: Song;
   @ViewChild('clickbutton', { static: false }) clickbutton: ElementRef;
   public loading = false;
+  public listo = false;
 
 
   constructor(
@@ -34,15 +35,15 @@ export class PlayerComponent implements OnInit {
       params
     );
 
-    if(spotifyLoginWindow){
-      spotifyLoginWindow.onbeforeunload = () => {
+    setInterval(() => {
+      if (this.loading) {
         const token = localStorage.getItem('access_token');
-        if(token) {
+        if (token) {
           this.getTrack(token);
-          console.warn('buscando canción')
+          console.log('buscando');
         }
       }
-    }
+    }, 200);
   }
 
 
@@ -52,6 +53,7 @@ export class PlayerComponent implements OnInit {
       ({ tracks: { items: [first] } }) => {
           this.song.spotifyTrack = first;
           this.loading = false;
+          this.listo = true;
       },
       ( error ) => this._player.deleteToken()
     );
