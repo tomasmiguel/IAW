@@ -46,8 +46,12 @@ export class SearchComponent implements OnInit {
       document.querySelector('.arrow')?.classList.remove('d-none');
     }, 500);
     setTimeout(() => {
-     document.querySelector('#search')?.classList.add('d-none');
-    }, 2000);
+      document.querySelector('#search')?.classList.add('d-none');
+    }, 1500);
+    setTimeout(() => {
+      document.querySelector('#navbar')?.classList.add('fixed-top');
+      document.querySelector<HTMLElement>('#results')?.classList.add('padding-top');
+    }, 2500);
   }
 
   scrollToTop(): void {

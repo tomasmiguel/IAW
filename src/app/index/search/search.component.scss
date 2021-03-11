@@ -107,6 +107,15 @@ input[name="song"] {
   text-align: center;
 }
 
+
+.fixed-top{
+  transition: 0.5s;
+}
+
+.padding-top{
+  padding-top: 90px;
+}
+
 @media only screen and (max-width: 1200px) {}
 
 @media only screen and (max-width: 992px) {}
