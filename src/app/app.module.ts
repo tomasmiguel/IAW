@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +26,10 @@ import { InfoComponent } from './index/results/info/info.component';
 import { CallbackComponent } from './index/results/callback/callback.component';
 import { SafePipe } from './index/results/player/pipes/safe.pipe';
 import { LoginComponent } from './index/login/login.component';
+import { registerLocaleData } from '@angular/common';
+import localeDeAt from '@angular/common/locales/es-AR';
 
+registerLocaleData(localeDeAt);
 
 @NgModule({
   declarations: [
@@ -76,7 +79,8 @@ import { LoginComponent } from './index/login/login.component';
       innerStrokeColor: '#a7a7a7',
     })
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-AR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
