@@ -9,9 +9,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InfoComponent implements OnInit {
   @Input() song: Song;
 
+  songType = new Map([
+    ['positive', 'Positiva'],
+    ['negative', 'Negativa'],
+    ['neutral', 'Neutral']
+  ]);
+
   constructor() { }
 
   ngOnInit(): void {
+    this.song.sentiment.type = String(this.songType.get(this.song.sentiment.type));
   }
 
 }

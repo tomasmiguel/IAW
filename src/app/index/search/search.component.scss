@@ -29,25 +29,10 @@ $altura : 43px;
   box-shadow  : 0 1px 1px rgba(0, 0, 0, 0) !important;
 }
 
-/*
-
-.data-input {
-  text-align: center;
-  width     : 300px;
-  box-shadow: 50px 5px 10px rgba(0, 0, 0, 0.05);
-  outline   : 0;
-  height    : $altura;
+mat-form-field {
+  min-width: 13.5rem;
+  padding-right: 0.38rem
 }
-input[name="artist"] {
-  border-radius     : 50px 0 0 50px;
-  border-right-width: 0px;
-  padding-left      : 25px;
-}
-
-input[name="song"] {
-  border-radius: 0 50px 50px 0;
-  padding-left : 15px;
-}*/
 
 .search {
   background-image: -webkit-linear-gradient(top, #f8f9fa, #f8f9fa);
