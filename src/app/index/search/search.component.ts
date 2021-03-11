@@ -60,7 +60,11 @@ export class SearchComponent implements OnInit {
 
   reset(): void {
     this.mySearchForm.resetForm();
-    document.querySelector('#search')?.classList.remove('d-none');
+    document.querySelector('#navbar')?.classList.remove('fixed-top');
+    document.querySelector<HTMLElement>('#results')?.classList.remove('padding-top');
+    setTimeout(() => {
+      document.querySelector('#search')?.classList.remove('d-none');
+    }, 100);
   }
 
   async getSentiments() {
