@@ -25,6 +25,8 @@ export class CallbackComponent implements OnInit {
           localStorage.setItem('expires_in', expires_in);
           localStorage.setItem('refresh_token', refresh_token);
           localStorage.setItem('scope', scope);
+          localStorage.setItem('expiresRefreshToken', (Date.now() + 24*60*60*1000).toString());
+          localStorage.setItem('generatedRefreshToken', Date.now().toString());
 
           // Close the popup
           window.close();
