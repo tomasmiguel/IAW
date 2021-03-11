@@ -6,13 +6,8 @@
 
   <div class="data">
     <ng-container>
-      by <span *ngFor="let artist of song.spotifyTrack.artists"> {{artist.name}} </span>
-    </ng-container>
-
-    <ng-container>
-      <span class="date pl-2" *ngIf="song.spotifyTrack.album.release_date">
-        {{ song.spotifyTrack.album.release_date | date:'mediumDate' }}
-      </span>
+      <b>de</b> 
+      <span *ngFor="let artist of song.spotifyTrack.artists"> {{artist.name}} </span>
     </ng-container>
   </div>
 
@@ -24,6 +19,10 @@
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <b>Álbum:</b>
       <span class="badge badge-secondary badge-pill">{{song.spotifyTrack.album.name}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <b>Año de lanzamiento:</b>
+      <span class="badge badge-secondary badge-pill">{{ song.spotifyTrack.album.release_date | date:'mediumDate' }}</span>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <b>Canción nº del álbum:</b>
