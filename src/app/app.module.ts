@@ -26,10 +26,52 @@ import { InfoComponent } from './index/results/info/info.component';
 import { CallbackComponent } from './index/results/callback/callback.component';
 import { SafePipe } from './index/results/player/pipes/safe.pipe';
 import { LoginComponent } from './index/login/login.component';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { registerLocaleData } from '@angular/common';
 import localeDeAt from '@angular/common/locales/es-AR';
 
 registerLocaleData(localeDeAt);
+
+const customNotifierOptions: NotifierOptions = {
+  position: {
+    horizontal: {
+      position: 'middle',
+      distance: 12
+    },
+    vertical: {
+      position: 'bottom',
+      distance: 12,
+      gap: 10
+    }
+  },
+  theme: 'material',
+  behaviour: {
+    autoHide: 4000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: false,
+    stacking: 1
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 400,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'slide',
+      speed: 400,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
   declarations: [
@@ -77,7 +119,8 @@ registerLocaleData(localeDeAt);
       outerStrokeGradientStopColor: '#3b3c42',
       innerStrokeWidth: 2,
       innerStrokeColor: '#a7a7a7',
-    })
+    }),
+    NotifierModule.withConfig((customNotifierOptions)),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-AR'}],

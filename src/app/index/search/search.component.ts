@@ -2,6 +2,7 @@ import { Song } from './models/song';
 import { SearchService } from './services/search.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'iaw-search',
@@ -11,6 +12,7 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 export class SearchComponent implements OnInit {
 
   @ViewChild('mySearchForm') public mySearchForm: NgForm;
+  private readonly notifier: NotifierService;
 
   public searchForm: FormGroup;
   public song: Song;
@@ -20,22 +22,30 @@ export class SearchComponent implements OnInit {
   constructor(
     private _search: SearchService,
     private formBuilder: FormBuilder,
+    private notifierService: NotifierService
   ) {
     this.searchForm = this.formBuilder.group({
       artist: [{ value: null, disabled: false }, [Validators.required]],
       song: [{ value: null, disabled: false }, [Validators.required]],
     });
+    this.notifier = notifierService;
   }
 
   ngOnInit(): void {
     this.search();
   }
 
-  search() {
+  search(): void {
     if (!this.searchForm.invalid) {
       this.isSearching = true;
       this.error = false;
       this.getLyrics();
+    }
+  }
+
+  onClickSearch(): void {
+    if (this.searchForm.invalid) {
+      this.notifier.notify('default', 'Complete los campos para continuar!');
     }
   }
 
@@ -67,7 +77,7 @@ export class SearchComponent implements OnInit {
     }, 100);
   }
 
-  async getSentiments() {
+  async getSentiments(): Promise<void> {
     if (this.song) {
       this._search.getSentiment(this.song.track.text_en).subscribe(
         ({ result }) => {
