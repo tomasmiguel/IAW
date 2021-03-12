@@ -1,6 +1,6 @@
 <div class="d-inline-block player-section">
 
-  <div *ngIf="!loading && !song.spotifyTrack" class="login">
+  <div *ngIf="!loading && !song.spotifyTrack && !notExists" class="login">
     <div class="spotify">
     </div>
     <h4>Escuchar la canción</h4>
@@ -24,6 +24,12 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+
+  <div *ngIf="!loading && notExists" class="text-danger notExists text-center">
+    <h1>La canción '{{song.track.name}}' de '{{song.artist.name}}' no está disponible en Spotify.</h1>
+    <p><i class="far fa-frown-open"></i></p>
+  </div>
+
 </div>
 
 
