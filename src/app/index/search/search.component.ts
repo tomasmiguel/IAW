@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit {
   }
 
   scrollToTop(): void {
-   document.getElementById('navbar')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+   document.getElementById('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   reset(): void {
