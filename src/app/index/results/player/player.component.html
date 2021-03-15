@@ -1,19 +1,5 @@
 <div class="d-inline-block player-section">
 
-  <div *ngIf="!loading && !song.spotifyTrack && !notExists" class="login">
-    <div class="spotify">
-    </div>
-    <h4>Escuchar la canción</h4>
-    <div class="logos">
-      <i class="far fa-play-circle"></i>
-      <i class="fab fa-spotify"></i>
-    </div>
-
-    <button class="btn btn-success"  (click)="login()">
-      Ingresar a Spotify
-    </button>
-  </div>
-
   <div *ngIf="!loading && listo" class="login mb-3">
     <iframe class="player" [attr.src]="'https://open.spotify.com/embed?uri=' + song.spotifyTrack.uri + '' | safe" frameborder="0"
       allowtransparency="true" allow="encrypted-media"></iframe>
