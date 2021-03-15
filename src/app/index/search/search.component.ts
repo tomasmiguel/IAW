@@ -13,16 +13,16 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('mySearchForm') public mySearchForm: NgForm;
   private readonly notifier: NotifierService;
-
   public searchForm: FormGroup;
   public song: Song;
   public isSearching = false;
   public error = false;
+  public mostrar = true;
 
   constructor(
     private _search: SearchService,
     private formBuilder: FormBuilder,
-    private notifierService: NotifierService
+    protected notifierService: NotifierService
   ) {
     this.searchForm = this.formBuilder.group({
       artist: [{ value: null, disabled: false }, [Validators.required]],
@@ -50,6 +50,7 @@ export class SearchComponent implements OnInit {
   }
 
   private scroll(): void {
+    this.mostrar = true;
     setTimeout(() => {
       const resultsDiv = document.getElementById('navbar');
       resultsDiv?.scrollIntoView({ block: 'start', behavior: 'smooth' });
@@ -74,6 +75,8 @@ export class SearchComponent implements OnInit {
     document.querySelector<HTMLElement>('#results')?.classList.remove('padding-top');
     setTimeout(() => {
       document.querySelector('#search')?.classList.remove('d-none');
+      document.querySelector('.arrow')?.classList.add('d-none');
+      this.mostrar = false;
     }, 100);
   }
 
