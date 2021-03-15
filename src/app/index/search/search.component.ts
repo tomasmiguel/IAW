@@ -66,7 +66,7 @@ export class SearchComponent implements OnInit {
   }
 
   scrollToTop(): void {
-   document.getElementById('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    document.getElementById('results')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   reset(): void {
@@ -80,44 +80,35 @@ export class SearchComponent implements OnInit {
     }, 100);
   }
 
-  async getSentiments(): Promise<void> {
-    if (this.song) {
-      this._search.getSentiment(this.song.track.text_en).subscribe(
-        ({ result }) => {
-          if (this.song) {
-            setTimeout(() => {
-              this.song.sentiment = result;
-            }, 1400);
-          }
-        }
-      );
-    }
-  }
-
-  getEmotions(): void {
-    this._search.getEmotions(this.song.track.text_en).subscribe(
-      (response) => {
-        const { emotion: { document: { emotion } } } = response;
-        this.song.emotion = emotion;
-        this.isSearching = false;
+  getSentiments(): void {
+    this._search.getSentiment(this.song.track.text_en).subscribe(
+      ({ result }) => {
+        this.song.sentiment = result;
         this.scroll();
       }
     );
   }
 
+  getEmotions(): void {
+    this._search.getEmotions(this.song.track.text_en).subscribe({
+      next: response => {
+        const { emotion: { document: { emotion } } } = response;
+        this.song.emotion = emotion;
+        this.isSearching = false;
+      },
+      complete: () => this.getSentiments()
+    });
+  }
+
   async translate(): Promise<void> {
-    if (this.song) {
-      const { translations: [first] } =
-        await this._search.translateText([this.song.track.text], this.song.track.lang.code, 'en').toPromise();
-      this.song.track.text_en = first.translation;
-    }
+    const { translations: [first] } =
+      await this._search.translateText([this.song.track.text], this.song.track.lang.code, 'en').toPromise();
+    this.song.track.text_en = first.translation;
   }
 
   async identifyLanguage(): Promise<void> {
-    if (this.song) {
-      const { languages: [first] } = await this._search.identifyLanguage(this.song.track.text).toPromise();
-      this.song.track.lang.code = first.language;
-    }
+    const { languages: [first] } = await this._search.identifyLanguage(this.song.track.text).toPromise();
+    this.song.track.lang.code = first.language;
   }
 
   async getLyrics(): Promise<void> {
@@ -136,7 +127,6 @@ export class SearchComponent implements OnInit {
             : this.song.track.text_en = this.song.track.text;
 
           this.getEmotions();
-          this.getSentiments();
         }
       },
       (error) => this.setError(error)
