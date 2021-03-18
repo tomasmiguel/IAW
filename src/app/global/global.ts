@@ -26,6 +26,6 @@ export const spotify = {
   client_id: 'd4fb8e7c1ef44fc4b01f0d047a0c9a52',
   cliente_secret: '3110d9697eac4498ae877006ddf878a0',
   apiKey: 'ZDRmYjhlN2MxZWY0NGZjNGIwMWYwZDA0N2EwYzlhNTI6MzExMGQ5Njk3ZWFjNDQ5OGFlODc3MDA2ZGRmODc4YTA=',
-  //redirect_uri: 'https://music-sentim.herokuapp.com/callback',
-  redirect_uri: 'http://localhost:4444/callback'
+  redirect_uri: 'https://music-sentim.herokuapp.com/callback',
+  //redirect_uri: 'http://localhost:4444/callback'
 };
