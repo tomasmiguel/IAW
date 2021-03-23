@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   public song: Song;
   public isSearching = false;
   public error = false;
-  public mostrar = true;
+  public mostrar = false;
 
   constructor(
     private _search: SearchService,
