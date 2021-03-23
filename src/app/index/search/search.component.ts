@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.search();
+    this.mySearchForm.resetForm();
   }
 
   search(): void {

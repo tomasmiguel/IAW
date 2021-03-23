@@ -1,7 +1,6 @@
 import { PlayerService } from './../player/services/player.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'iaw-callback',

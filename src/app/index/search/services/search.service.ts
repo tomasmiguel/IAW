@@ -1,4 +1,3 @@
-import { Song } from './../models/song';
 import { Observable } from 'rxjs';
 import { lyrics, watson, sentim } from '../../../global/global';
 import { HttpClient, HttpHeaders } from '@angular/common/http';

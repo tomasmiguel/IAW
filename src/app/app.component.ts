@@ -1,4 +1,3 @@
-import { spotify } from './global/global';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
