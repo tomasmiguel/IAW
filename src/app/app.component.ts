@@ -29,10 +29,14 @@ export class AppComponent implements OnInit {
 
   }
 
-  private deleteTokens() {
+  private deleteTokens(): void {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('access_token');
     localStorage.removeItem('expiresRefreshToken');
+    localStorage.removeItem('token_type');
+    localStorage.removeItem('expires_in');
+    localStorage.removeItem('scope');
+    localStorage.removeItem('generatedRefreshToken');
   }
 
 
