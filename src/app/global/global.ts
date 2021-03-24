@@ -28,5 +28,3 @@ export const spotify = {
   apiKey: 'ZDRmYjhlN2MxZWY0NGZjNGIwMWYwZDA0N2EwYzlhNTI6MzExMGQ5Njk3ZWFjNDQ5OGFlODc3MDA2ZGRmODc4YTA=',
   redirect_uri: (window.location.hostname === 'localhost') ? 'http://localhost:4444/callback' : 'https://music-sentim.herokuapp.com/callback',
 };
-
-console.log(window.location.hostname);
