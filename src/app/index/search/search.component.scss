@@ -34,10 +34,13 @@ $altura : 43px;
   box-shadow  : 0 1px 1px rgba(0, 0, 0, 0);
 }
 
-mat-form-field {
+::ng-deep .mat-form-field {
   padding-right: 1rem;
-  text-align: center;
-  padding-top: 8px;
+ 
+  .mat-form-field-label {
+    padding-top: 8px !important;
+    text-align: center;
+  }
 }
 
 .search {
