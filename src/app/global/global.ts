@@ -23,8 +23,8 @@ export const watson = {
 };
 
 export const spotify = {
-  client_id: 'd4fb8e7c1ef44fc4b01f0d047a0c9a52',
-  cliente_secret: '3110d9697eac4498ae877006ddf878a0',
-  apiKey: 'ZDRmYjhlN2MxZWY0NGZjNGIwMWYwZDA0N2EwYzlhNTI6MzExMGQ5Njk3ZWFjNDQ5OGFlODc3MDA2ZGRmODc4YTA=',
+  client_id: 'b60200260c204392ba14e9cc44621c45',
+  cliente_secret: '7c1e657cf9ee4a9bb80862930ba4fb8f',
+  apiKey: 'YjYwMjAwMjYwYzIwNDM5MmJhMTRlOWNjNDQ2MjFjNDU6N2MxZTY1N2NmOWVlNGE5YmI4MDg2MjkzMGJhNGZiOGY=',
   redirect_uri: (window.location.hostname === 'localhost') ? 'http://localhost:4444/callback' : 'https://music-sentim.herokuapp.com/callback',
 };
