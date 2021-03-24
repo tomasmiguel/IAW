@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit {
 
   onClickSearch(): void {
     if (this.searchForm.invalid) {
-      this.notifier.notify('default', 'Complete los campos para continuar!');
+      this.notifier.notify('default', 'Complete los campos para continuar');
     }
   }
 
