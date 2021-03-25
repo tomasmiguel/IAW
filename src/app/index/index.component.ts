@@ -10,15 +10,6 @@ export class IndexComponent implements OnInit {
 
   constructor() { }
 
-  /* ngOnInit(): void {
-    const refreshToken = localStorage.getItem('refresh_token');
-    this.login = (refreshToken) ? true : false;
-
-
-    const expiresRefreshToken = localStorage.getItem('expiresRefreshToken');
-  } */
-
-
   ngOnInit(): void {
     const expiresAccessToken = localStorage.getItem('expiresAccessToken');
 
